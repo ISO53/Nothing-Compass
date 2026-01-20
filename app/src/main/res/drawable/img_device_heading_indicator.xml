@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-        android:width="200dp"
-        android:height="200dp"
-        android:viewportWidth="200"
-        android:viewportHeight="200">
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
 
-    <path
-            android:pathData="M100,2 L100,27"
-            android:strokeWidth="4"
-            android:strokeColor="?attr/colorPrimary" />
+    <!-- vertical dots (7) -->
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M100,125 a5,5 0 1,0 0.01,0" />
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M100,115 a5,5 0 1,0 0.01,0" />
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M100,105 a5,5 0 1,0 0.01,0" />
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M100,95 a5,5 0 1,0 0.01,0" />
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M100,85 a5,5 0 1,0 0.01,0" />
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M100,75 a5,5 0 1,0 0.01,0" />
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M100,65 a5,5 0 1,0 0.01,0" />
+
+    <!-- arrow head side dots -->
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M90,75 a5,5 0 1,0 0.01,0" />
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M80,85 a5,5 0 1,0 0.01,0" />
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M110,75 a5,5 0 1,0 0.01,0" />
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M120,85 a5,5 0 1,0 0.01,0" />
 
 </vector>

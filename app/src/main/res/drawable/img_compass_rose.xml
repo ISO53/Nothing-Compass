@@ -12,7 +12,7 @@
             android:rotation="0.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="2"
+                android:strokeWidth="4"
                 android:strokeColor="?android:attr/textColorPrimary" />
     </group>
 
@@ -22,7 +22,7 @@
             android:rotation="3.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -32,7 +32,7 @@
             android:rotation="6.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -42,7 +42,7 @@
             android:rotation="10.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -52,7 +52,7 @@
             android:rotation="13.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -62,7 +62,7 @@
             android:rotation="16.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -72,7 +72,7 @@
             android:rotation="20.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -82,7 +82,7 @@
             android:rotation="23.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -92,7 +92,7 @@
             android:rotation="26.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -102,7 +102,7 @@
             android:rotation="30.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="2"
+                android:strokeWidth="4"
                 android:strokeColor="?android:attr/textColorPrimary" />
     </group>
 
@@ -112,7 +112,7 @@
             android:rotation="33.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -122,7 +122,7 @@
             android:rotation="36.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -132,7 +132,7 @@
             android:rotation="40.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -142,7 +142,7 @@
             android:rotation="43.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -152,7 +152,7 @@
             android:rotation="46.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -162,7 +162,7 @@
             android:rotation="50.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -172,7 +172,7 @@
             android:rotation="53.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -182,7 +182,7 @@
             android:rotation="56.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -192,7 +192,7 @@
             android:rotation="60.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="2"
+                android:strokeWidth="4"
                 android:strokeColor="?android:attr/textColorPrimary" />
     </group>
 
@@ -202,7 +202,7 @@
             android:rotation="63.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -212,7 +212,7 @@
             android:rotation="66.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -222,7 +222,7 @@
             android:rotation="70.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -232,7 +232,7 @@
             android:rotation="73.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -242,7 +242,7 @@
             android:rotation="76.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -252,7 +252,7 @@
             android:rotation="80.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -262,7 +262,7 @@
             android:rotation="83.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -272,7 +272,7 @@
             android:rotation="86.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -282,7 +282,7 @@
             android:rotation="90.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="2"
+                android:strokeWidth="4"
                 android:strokeColor="?android:attr/textColorPrimary" />
     </group>
 
@@ -292,7 +292,7 @@
             android:rotation="93.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -302,7 +302,7 @@
             android:rotation="96.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -312,7 +312,7 @@
             android:rotation="100.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -322,7 +322,7 @@
             android:rotation="103.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -332,7 +332,7 @@
             android:rotation="106.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -342,7 +342,7 @@
             android:rotation="110.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -352,7 +352,7 @@
             android:rotation="113.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -362,7 +362,7 @@
             android:rotation="116.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -372,7 +372,7 @@
             android:rotation="120.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="2"
+                android:strokeWidth="4"
                 android:strokeColor="?android:attr/textColorPrimary" />
     </group>
 
@@ -382,7 +382,7 @@
             android:rotation="123.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -392,7 +392,7 @@
             android:rotation="126.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -402,7 +402,7 @@
             android:rotation="130.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -412,7 +412,7 @@
             android:rotation="133.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -422,7 +422,7 @@
             android:rotation="136.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -432,7 +432,7 @@
             android:rotation="140.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -442,7 +442,7 @@
             android:rotation="143.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -452,7 +452,7 @@
             android:rotation="146.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -462,7 +462,7 @@
             android:rotation="150.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="2"
+                android:strokeWidth="4"
                 android:strokeColor="?android:attr/textColorPrimary" />
     </group>
 
@@ -472,7 +472,7 @@
             android:rotation="153.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -482,7 +482,7 @@
             android:rotation="156.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -492,7 +492,7 @@
             android:rotation="160.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -502,7 +502,7 @@
             android:rotation="163.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -512,7 +512,7 @@
             android:rotation="166.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -522,7 +522,7 @@
             android:rotation="170.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -532,7 +532,7 @@
             android:rotation="173.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -542,7 +542,7 @@
             android:rotation="176.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -552,7 +552,7 @@
             android:rotation="180.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="2"
+                android:strokeWidth="4"
                 android:strokeColor="?android:attr/textColorPrimary" />
     </group>
 
@@ -562,7 +562,7 @@
             android:rotation="183.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -572,7 +572,7 @@
             android:rotation="186.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -582,7 +582,7 @@
             android:rotation="190.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -592,7 +592,7 @@
             android:rotation="193.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -602,7 +602,7 @@
             android:rotation="196.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -612,7 +612,7 @@
             android:rotation="200.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -622,7 +622,7 @@
             android:rotation="203.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -632,7 +632,7 @@
             android:rotation="206.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -642,7 +642,7 @@
             android:rotation="210.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="2"
+                android:strokeWidth="4"
                 android:strokeColor="?android:attr/textColorPrimary" />
     </group>
 
@@ -652,7 +652,7 @@
             android:rotation="213.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -662,7 +662,7 @@
             android:rotation="216.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -672,7 +672,7 @@
             android:rotation="220.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -682,7 +682,7 @@
             android:rotation="223.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -692,7 +692,7 @@
             android:rotation="226.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -702,7 +702,7 @@
             android:rotation="230.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -712,7 +712,7 @@
             android:rotation="233.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -722,7 +722,7 @@
             android:rotation="236.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -732,7 +732,7 @@
             android:rotation="240.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="2"
+                android:strokeWidth="4"
                 android:strokeColor="?android:attr/textColorPrimary" />
     </group>
 
@@ -742,7 +742,7 @@
             android:rotation="243.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -752,7 +752,7 @@
             android:rotation="246.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -762,7 +762,7 @@
             android:rotation="250.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -772,7 +772,7 @@
             android:rotation="253.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -782,7 +782,7 @@
             android:rotation="256.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -792,7 +792,7 @@
             android:rotation="260.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -802,7 +802,7 @@
             android:rotation="263.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -812,7 +812,7 @@
             android:rotation="266.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -822,7 +822,7 @@
             android:rotation="270.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="2"
+                android:strokeWidth="4"
                 android:strokeColor="?android:attr/textColorPrimary" />
     </group>
 
@@ -832,7 +832,7 @@
             android:rotation="273.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -842,7 +842,7 @@
             android:rotation="276.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -852,7 +852,7 @@
             android:rotation="280.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -862,7 +862,7 @@
             android:rotation="283.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -872,7 +872,7 @@
             android:rotation="286.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -882,7 +882,7 @@
             android:rotation="290.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -892,7 +892,7 @@
             android:rotation="293.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -902,7 +902,7 @@
             android:rotation="296.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -912,7 +912,7 @@
             android:rotation="300.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="2"
+                android:strokeWidth="4"
                 android:strokeColor="?android:attr/textColorPrimary" />
     </group>
 
@@ -922,7 +922,7 @@
             android:rotation="303.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -932,7 +932,7 @@
             android:rotation="306.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -942,7 +942,7 @@
             android:rotation="310.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -952,7 +952,7 @@
             android:rotation="313.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -962,7 +962,7 @@
             android:rotation="316.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -972,7 +972,7 @@
             android:rotation="320.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -982,7 +982,7 @@
             android:rotation="323.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -992,7 +992,7 @@
             android:rotation="326.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -1002,7 +1002,7 @@
             android:rotation="330.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="2"
+                android:strokeWidth="4"
                 android:strokeColor="?android:attr/textColorPrimary" />
     </group>
 
@@ -1012,7 +1012,7 @@
             android:rotation="333.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -1022,7 +1022,7 @@
             android:rotation="336.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -1032,7 +1032,7 @@
             android:rotation="340.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -1042,7 +1042,7 @@
             android:rotation="343.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -1052,7 +1052,7 @@
             android:rotation="346.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -1062,7 +1062,7 @@
             android:rotation="350.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -1072,7 +1072,7 @@
             android:rotation="353.333">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -1082,7 +1082,7 @@
             android:rotation="356.667">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="1"
+                android:strokeWidth="2"
                 android:strokeColor="?android:attr/textColorSecondary" />
     </group>
 
@@ -1092,7 +1092,7 @@
             android:rotation="360.000">
         <path
                 android:pathData="M100,23 L100,23.01" android:strokeLineCap="round"
-                android:strokeWidth="2"
+                android:strokeWidth="4"
                 android:strokeColor="?android:attr/textColorPrimary" />
     </group>
 
