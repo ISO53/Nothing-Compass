@@ -240,7 +240,10 @@ public class CompassFragment extends Fragment {
                 preferenceStore.getScreenOrientationLocked().setValue(locked == null ? true : !locked);
                 return true;
             } else if (id == R.id.action_settings) {
-                // Settings not implemented yet
+                requireActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.main, new SettingsFragment())
+                        .addToBackStack(null)
+                        .commit();
                 return true;
             }
             return false;
