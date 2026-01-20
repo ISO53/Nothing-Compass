@@ -237,6 +237,12 @@ public class CompassFragment extends Fragment {
                 return true;
             } else if (id == R.id.action_settings) {
                 requireActivity().getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(
+                                R.anim.slide_in_right,
+                                R.anim.slide_out_left,
+                                R.anim.slide_in_left,
+                                R.anim.slide_out_right
+                        )
                         .replace(R.id.main, new SettingsFragment())
                         .addToBackStack(null)
                         .commit();
