@@ -46,7 +46,7 @@
                 app:summary="@string/author_name">
             <intent
                     android:action="android.intent.action.VIEW"
-                    android:data="mailto:philipp.bobek@mailbox.org" />
+                    android:data="mailto:ihsansimsek5335@gmail.com" />
         </Preference>
 
         <Preference
