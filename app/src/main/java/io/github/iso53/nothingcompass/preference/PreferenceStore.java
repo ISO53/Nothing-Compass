@@ -20,7 +20,6 @@ public class PreferenceStore {
 
     private final MutableLiveData<Boolean> trueNorth = new MutableLiveData<>();
     private final MutableLiveData<Boolean> hapticFeedback = new MutableLiveData<>();
-    private final MutableLiveData<Boolean> screenOrientationLocked = new MutableLiveData<>();
     private final MutableLiveData<AppNightMode> nightMode = new MutableLiveData<>();
     private final MutableLiveData<Boolean> accessLocationPermissionRequested = new MutableLiveData<>();
 
@@ -29,7 +28,6 @@ public class PreferenceStore {
     private final SharedPreferences.OnSharedPreferenceChangeListener sharedPreferenceChangeListener;
     private final Observer<Boolean> trueNorthObserver;
     private final Observer<Boolean> hapticFeedbackObserver;
-    private final Observer<Boolean> screenOrientationLockedObserver;
     private final Observer<AppNightMode> nightModeObserver;
     private final Observer<Boolean> accessLocationPermissionRequestedObserver;
 
@@ -44,9 +42,6 @@ public class PreferenceStore {
                     break;
                 case PreferenceConstants.HAPTIC_FEEDBACK:
                     updateHapticFeedback();
-                    break;
-                case PreferenceConstants.SCREEN_ORIENTATION_LOCKED:
-                    updateScreenOrientationLocked();
                     break;
                 case PreferenceConstants.NIGHT_MODE:
                     updateNightMode();
@@ -67,10 +62,6 @@ public class PreferenceStore {
             Log.d(TAG, "Persisted hapticFeedback: " + value);
         };
 
-        this.screenOrientationLockedObserver = value -> {
-            sharedPreferences.edit().putBoolean(PreferenceConstants.SCREEN_ORIENTATION_LOCKED, value).apply();
-            Log.d(TAG, "Persisted screenOrientationLocked: " + value);
-        };
 
         this.nightModeObserver = value -> {
             sharedPreferences.edit().putString(PreferenceConstants.NIGHT_MODE, value.getPreferenceValue()).apply();
@@ -84,7 +75,6 @@ public class PreferenceStore {
 
         updateTrueNorth();
         updateHapticFeedback();
-        updateScreenOrientationLocked();
         updateNightMode();
         updateAccessLocationPermissionRequested();
 
@@ -93,7 +83,6 @@ public class PreferenceStore {
             public void onCreate(@NonNull LifecycleOwner owner) {
                 trueNorth.observeForever(trueNorthObserver);
                 hapticFeedback.observeForever(hapticFeedbackObserver);
-                screenOrientationLocked.observeForever(screenOrientationLockedObserver);
                 nightMode.observeForever(nightModeObserver);
                 accessLocationPermissionRequested.observeForever(accessLocationPermissionRequestedObserver);
 
@@ -106,7 +95,6 @@ public class PreferenceStore {
 
                 trueNorth.removeObserver(trueNorthObserver);
                 hapticFeedback.removeObserver(hapticFeedbackObserver);
-                screenOrientationLocked.removeObserver(screenOrientationLockedObserver);
                 nightMode.removeObserver(nightModeObserver);
                 accessLocationPermissionRequested.removeObserver(accessLocationPermissionRequestedObserver);
             }
@@ -121,9 +109,6 @@ public class PreferenceStore {
         return hapticFeedback;
     }
 
-    public MutableLiveData<Boolean> getScreenOrientationLocked() {
-        return screenOrientationLocked;
-    }
 
     public MutableLiveData<AppNightMode> getNightMode() {
         return nightMode;
@@ -147,12 +132,6 @@ public class PreferenceStore {
         }
     }
 
-    private void updateScreenOrientationLocked() {
-        boolean storedValue = sharedPreferences.getBoolean(PreferenceConstants.SCREEN_ORIENTATION_LOCKED, false);
-        if (!Boolean.valueOf(storedValue).equals(screenOrientationLocked.getValue())) {
-            screenOrientationLocked.setValue(storedValue);
-        }
-    }
 
     private void updateNightMode() {
         String storedValue = sharedPreferences.getString(PreferenceConstants.NIGHT_MODE, AppNightMode.FOLLOW_SYSTEM.getPreferenceValue());

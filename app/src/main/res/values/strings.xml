@@ -3,7 +3,6 @@
     <string name="app_name">Nothing Compass</string>
     <string name="compass">Compass</string>
     <string name="sensor_status">Sensor status</string>
-    <string name="lock_screen_rotation">Lock screen rotation</string>
     <string name="compass_rose_image_description">Compass rose showing to north</string>
     <string name="device_heading_indicator_image_description">Indicates in which direction the device is pointing</string>
     <string name="cardinal_direction_north">North</string>

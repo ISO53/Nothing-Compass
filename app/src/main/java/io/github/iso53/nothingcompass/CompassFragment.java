@@ -235,10 +235,6 @@ public class CompassFragment extends Fragment {
             if (id == R.id.action_sensor_status) {
                 showSensorStatusPopup();
                 return true;
-            } else if (id == R.id.action_screen_rotation) {
-                Boolean locked = preferenceStore.getScreenOrientationLocked().getValue();
-                preferenceStore.getScreenOrientationLocked().setValue(locked == null ? true : !locked);
-                return true;
             } else if (id == R.id.action_settings) {
                 requireActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.main, new SettingsFragment())

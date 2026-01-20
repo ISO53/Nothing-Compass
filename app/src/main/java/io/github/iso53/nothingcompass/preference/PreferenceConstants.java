@@ -5,7 +5,6 @@ public final class PreferenceConstants {
 
     public static final String TRUE_NORTH = "true_north";
     public static final String HAPTIC_FEEDBACK = "haptic_feedback";
-    public static final String SCREEN_ORIENTATION_LOCKED = "screen_orientation_locked";
     public static final String NIGHT_MODE = "night_mode";
     public static final String NIGHT_MODE_VALUE_FOLLOW_SYSTEM = "follow_system";
     public static final String NIGHT_MODE_VALUE_NO = "no";

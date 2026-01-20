@@ -8,11 +8,6 @@
             android:title="@string/sensor_status"
             app:showAsAction="ifRoom" />
 
-    <item
-            android:id="@+id/action_screen_rotation"
-            android:icon="@drawable/ic_screen_rotation"
-            android:title="@string/lock_screen_rotation"
-            app:showAsAction="ifRoom" />
 
     <item
             android:id="@+id/action_settings"
