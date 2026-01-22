@@ -15,26 +15,16 @@ public final class RotationVector {
         this.z = z;
     }
 
-    public float getX() {
-        return x;
-    }
-
-    public float getY() {
-        return y;
-    }
-
-    public float getZ() {
-        return z;
-    }
-
     public float[] toArray() {
-        return new float[]{x, y, z};
+        return new float[] { x, y, z };
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         RotationVector that = (RotationVector) o;
         return Float.compare(that.x, x) == 0 &&
                 Float.compare(that.y, y) == 0 &&

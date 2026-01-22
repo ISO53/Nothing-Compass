@@ -9,7 +9,8 @@ import io.github.iso53.nothingcompass.model.DisplayRotation;
 import io.github.iso53.nothingcompass.model.RotationVector;
 
 public final class MathUtils {
-    private MathUtils() {}
+    private MathUtils() {
+    }
 
     private static final int AZIMUTH = 0;
     private static final int AXIS_SIZE = 3;
@@ -57,15 +58,5 @@ public final class MathUtils {
         long time = location.getTime();
         GeomagneticField geomagneticField = new GeomagneticField(latitude, longitude, altitude, time);
         return geomagneticField.getDeclination();
-    }
-
-    public static float getClosestNumberFromInterval(float number, float interval) {
-        return Math.round(number / interval) * interval;
-    }
-
-    public static boolean isAzimuthBetweenTwoPoints(Azimuth azimuth, Azimuth pointA, Azimuth pointB) {
-        float aToB = (pointB.getDegrees() - pointA.getDegrees() + 360f) % 360f;
-        float aToAzimuth = (azimuth.getDegrees() - pointA.getDegrees() + 360f) % 360f;
-        return (aToB <= 180f) != (aToAzimuth > aToB);
     }
 }

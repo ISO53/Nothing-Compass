@@ -24,8 +24,6 @@
     <string name="cardinal_direction_east_abbreviation">E</string>
     <string name="cardinal_direction_south_abbreviation">S</string>
     <string name="cardinal_direction_west_abbreviation">W</string>
-    <string name="device_heading_indicator_image_description">Indicates in which direction the device is pointing</string>
-    <string name="compass_spiral_description">Compass spiral that spins based on sensor values</string>
     <string name="sensor_accuracy_no_contact">Sensor not available</string>
     <string name="sensor_accuracy_unreliable">Sensor values are unreliable</string>
     <string name="sensor_accuracy_low">Low accuracy</string>
@@ -41,5 +39,4 @@
     <string name="error">Error</string>
     <string name="error_message">An error occurred.\\nMessage: %1$s\\nCode: %2$s</string>
     <string name="ok">OK</string>
-    <string name="empty_string"></string>
 </resources>

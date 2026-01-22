@@ -2,9 +2,7 @@ package io.github.iso53.nothingcompass.view;
 
 import android.location.Location;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
 import io.github.iso53.nothingcompass.model.Azimuth;

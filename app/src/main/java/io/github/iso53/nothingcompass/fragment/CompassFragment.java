@@ -11,25 +11,19 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CancellationSignal;
+import android.view.Display;
+import android.view.LayoutInflater;
+import android.view.Surface;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.core.location.LocationManagerCompat;
-import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.ViewModelProvider;
-
-import android.os.CancellationSignal;
-import android.view.Display;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.Surface;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
@@ -51,7 +45,6 @@ import io.github.iso53.nothingcompass.view.CompassViewModel;
 public class CompassFragment extends Fragment {
 
     private CompassViewModel compassViewModel;
-    // private final CompassMenuProvider compassMenuProvider = new CompassMenuProvider();
     private final CompassSensorEventListener compassSensorEventListener = new CompassSensorEventListener();
 
     private FragmentCompassBinding binding;
@@ -63,7 +56,8 @@ public class CompassFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
         binding = FragmentCompassBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -77,13 +71,13 @@ public class CompassFragment extends Fragment {
         binding.setModel(compassViewModel);
 
         preferenceStore = new PreferenceStore(requireContext(), getViewLifecycleOwner().getLifecycle());
-        preferenceStore.getTrueNorth().observe(getViewLifecycleOwner(), value -> compassViewModel.getTrueNorth().setValue(value));
-        preferenceStore.getHapticFeedback().observe(getViewLifecycleOwner(), value -> compassViewModel.getHapticFeedback().setValue(value));
+        preferenceStore.getTrueNorth().observe(getViewLifecycleOwner(),
+                value -> compassViewModel.getTrueNorth().setValue(value));
+        preferenceStore.getHapticFeedback().observe(getViewLifecycleOwner(),
+                value -> compassViewModel.getHapticFeedback().setValue(value));
 
         sensorManager = (SensorManager) requireContext().getSystemService(Context.SENSOR_SERVICE);
         locationManager = (LocationManager) requireContext().getSystemService(Context.LOCATION_SERVICE);
-
-        // requireActivity().addMenuProvider(compassMenuProvider, getViewLifecycleOwner(), Lifecycle.State.RESUMED);
 
         setupObservers();
     }
@@ -158,7 +152,8 @@ public class CompassFragment extends Fragment {
         super.onResume();
         registerSensorListener();
 
-        if (Boolean.TRUE.equals(compassViewModel.getTrueNorth().getValue()) && compassViewModel.getLocation().getValue() == null) {
+        if (Boolean.TRUE.equals(compassViewModel.getTrueNorth().getValue())
+                && compassViewModel.getLocation().getValue() == null) {
             requestLocation();
         }
     }
@@ -188,22 +183,26 @@ public class CompassFragment extends Fragment {
 
         Sensor rotationVectorSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
         if (rotationVectorSensor != null) {
-            sensorManager.registerListener(compassSensorEventListener, rotationVectorSensor, SensorManager.SENSOR_DELAY_FASTEST);
+            sensorManager.registerListener(compassSensorEventListener, rotationVectorSensor,
+                    SensorManager.SENSOR_DELAY_FASTEST);
         } else {
             showErrorDialog(AppError.ROTATION_VECTOR_SENSOR_NOT_AVAILABLE);
         }
 
         Sensor magneticFieldSensor = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
         if (magneticFieldSensor != null) {
-            sensorManager.registerListener(compassSensorEventListener, magneticFieldSensor, SensorManager.SENSOR_DELAY_NORMAL);
+            sensorManager.registerListener(compassSensorEventListener, magneticFieldSensor,
+                    SensorManager.SENSOR_DELAY_NORMAL);
         } else {
             showErrorDialog(AppError.MAGNETIC_FIELD_SENSOR_NOT_AVAILABLE);
         }
     }
 
     private void requestLocation() {
-        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
-                ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(requireContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(requireContext(),
+                        Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             registerLocationListener();
         } else {
             compassViewModel.getLocationStatus().setValue(LocationStatus.PERMISSION_DENIED);
@@ -241,13 +240,13 @@ public class CompassFragment extends Fragment {
                 provider,
                 locationRequestCancellationSignal,
                 ContextCompat.getMainExecutor(requireContext()),
-                this::setLocation
-        );
+                this::setLocation);
     }
 
     private void setLocation(Location location) {
         compassViewModel.getLocation().setValue(location);
-        compassViewModel.getLocationStatus().setValue(location == null ? LocationStatus.NOT_PRESENT : LocationStatus.PRESENT);
+        compassViewModel.getLocationStatus()
+                .setValue(location == null ? LocationStatus.NOT_PRESENT : LocationStatus.PRESENT);
     }
 
     private String getBestLocationProvider() {
@@ -257,10 +256,12 @@ public class CompassFragment extends Fragment {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             preferredProviders.add(LocationManager.FUSED_PROVIDER);
         }
-        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             preferredProviders.add(LocationManager.GPS_PROVIDER);
         }
-        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(requireContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             preferredProviders.add(LocationManager.NETWORK_PROVIDER);
         }
 
@@ -280,50 +281,6 @@ public class CompassFragment extends Fragment {
                 .setPositiveButton(R.string.ok, (dialog, which) -> dialog.dismiss())
                 .show();
     }
-
-    /*
-    private class CompassMenuProvider implements MenuProvider {
-        @Override
-        public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
-            menuInflater.inflate(R.menu.menu_compass, menu);
-            compassViewModel.getSensorAccuracy().observe(getViewLifecycleOwner(), accuracy -> {
-                MenuItem item = menu.findItem(R.id.action_sensor_status);
-                if (item != null) {
-                    item.setIcon(accuracy.getIconResourceId());
-                }
-            });
-        }
-
-        @Override
-        public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
-            int id = menuItem.getItemId();
-            if (id == R.id.action_sensor_status) {
-                showSensorStatusPopup();
-                return true;
-            } else if (id == R.id.action_settings) {
-                requireActivity().getSupportFragmentManager().beginTransaction()
-                        .setCustomAnimations(
-                                R.anim.slide_in_right,
-                                R.anim.slide_out_left,
-                                R.anim.slide_in_left,
-                                R.anim.slide_out_right
-                        )
-                        .add(R.id.root_coordinator, new SettingsFragment())
-                        .addToBackStack(null)
-                        .commit();
-                return true;
-            }
-            return false;
-        }
-
-        private void showSensorStatusPopup() {
-            new MaterialAlertDialogBuilder(requireContext())
-                    .setTitle(R.string.sensor_status)
-                    .setMessage(R.string.sensor_calibration_text)
-                    .setPositiveButton(R.string.ok, (dialog, which) -> dialog.dismiss())
-                    .show();
-        }
-    } */
 
     private class CompassSensorEventListener implements SensorEventListener {
 
@@ -356,13 +313,17 @@ public class CompassFragment extends Fragment {
             }
 
             float diff = target - currentDegree;
-            while (diff < -180) diff += 360;
-            while (diff > 180) diff -= 360;
+            while (diff < -180)
+                diff += 360;
+            while (diff > 180)
+                diff -= 360;
 
             currentDegree += diff * 0.5f;
 
-            while (currentDegree < 0) currentDegree += 360;
-            while (currentDegree >= 360) currentDegree -= 360;
+            while (currentDegree < 0)
+                currentDegree += 360;
+            while (currentDegree >= 360)
+                currentDegree -= 360;
 
             compassViewModel.getAzimuth().setValue(new Azimuth(currentDegree));
         }
@@ -371,7 +332,8 @@ public class CompassFragment extends Fragment {
             int rotation = Surface.ROTATION_0;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 Display display = requireContext().getDisplay();
-                if (display != null) rotation = display.getRotation();
+                if (display != null)
+                    rotation = display.getRotation();
             } else {
                 rotation = requireActivity().getWindowManager().getDefaultDisplay().getRotation();
             }
@@ -403,6 +365,4 @@ public class CompassFragment extends Fragment {
             }
         }
     }
-
-
 }
