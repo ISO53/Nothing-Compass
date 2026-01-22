@@ -1,0 +1,12 @@
+<resources>
+    <!-- Factors for calculating text size based on view width -->
+    <item name="status_degrees_text_size_factor" type="dimen" format="float">0.1</item>
+    <item name="status_cardinal_direction_text_size_factor" type="dimen" format="float">0.08</item>
+    <item name="cardinal_direction_text_size_factor" type="dimen" format="float">0.07</item>
+    <item name="degree_text_size_factor" type="dimen" format="float">0.04</item>
+
+    <!-- Ratios for calculating text radius from center -->
+    <!-- A smaller ratio means a larger radius (further from center) -->
+    <item name="cardinal_direction_text_ratio" type="dimen" format="float">0.35</item>
+    <item name="degree_text_ratio" type="dimen" format="float">0.08</item>
+</resources>

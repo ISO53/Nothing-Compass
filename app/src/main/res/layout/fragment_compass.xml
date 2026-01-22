@@ -62,8 +62,7 @@ tools:context="io.github.iso53.nothingcompass.CompassFragment">
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.8" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <!-- Center point for circular constraints -->
             <View
@@ -82,11 +81,12 @@ tools:context="io.github.iso53.nothingcompass.CompassFragment">
                 android:layout_height="wrap_content"
                 android:text="@string/degree_0_text"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="12sp"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintCircle="@+id/center_point"
                 app:layout_constraintCircleAngle="0"
-                app:layout_constraintCircleRadius="120dp"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintCircleRadius="@dimen/_135sdp"
+                tools:ignore="MissingConstraints"
+                android:rotation="@{model.azimuth.degrees}"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/degree_30_text"
@@ -94,11 +94,12 @@ tools:context="io.github.iso53.nothingcompass.CompassFragment">
                 android:layout_height="wrap_content"
                 android:text="@string/degree_30_text"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="12sp"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintCircle="@+id/center_point"
                 app:layout_constraintCircleAngle="30"
-                app:layout_constraintCircleRadius="120dp"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintCircleRadius="@dimen/_135sdp"
+                tools:ignore="MissingConstraints"
+                android:rotation="@{model.azimuth.degrees}"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/degree_60_text"
@@ -106,11 +107,12 @@ tools:context="io.github.iso53.nothingcompass.CompassFragment">
                 android:layout_height="wrap_content"
                 android:text="@string/degree_60_text"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="12sp"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintCircle="@+id/center_point"
                 app:layout_constraintCircleAngle="60"
-                app:layout_constraintCircleRadius="120dp"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintCircleRadius="@dimen/_135sdp"
+                tools:ignore="MissingConstraints"
+                android:rotation="@{model.azimuth.degrees}"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/degree_90_text"
@@ -118,11 +120,12 @@ tools:context="io.github.iso53.nothingcompass.CompassFragment">
                 android:layout_height="wrap_content"
                 android:text="@string/degree_90_text"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="12sp"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintCircle="@+id/center_point"
                 app:layout_constraintCircleAngle="90"
-                app:layout_constraintCircleRadius="120dp"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintCircleRadius="@dimen/_135sdp"
+                tools:ignore="MissingConstraints"
+                android:rotation="@{model.azimuth.degrees}"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/degree_120_text"
@@ -130,11 +133,12 @@ tools:context="io.github.iso53.nothingcompass.CompassFragment">
                 android:layout_height="wrap_content"
                 android:text="@string/degree_120_text"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="12sp"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintCircle="@+id/center_point"
                 app:layout_constraintCircleAngle="120"
-                app:layout_constraintCircleRadius="120dp"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintCircleRadius="@dimen/_135sdp"
+                tools:ignore="MissingConstraints"
+                android:rotation="@{model.azimuth.degrees}"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/degree_150_text"
@@ -142,11 +146,12 @@ tools:context="io.github.iso53.nothingcompass.CompassFragment">
                 android:layout_height="wrap_content"
                 android:text="@string/degree_150_text"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="12sp"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintCircle="@+id/center_point"
                 app:layout_constraintCircleAngle="150"
-                app:layout_constraintCircleRadius="120dp"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintCircleRadius="@dimen/_135sdp"
+                tools:ignore="MissingConstraints"
+                android:rotation="@{model.azimuth.degrees}"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/degree_180_text"
@@ -154,11 +159,12 @@ tools:context="io.github.iso53.nothingcompass.CompassFragment">
                 android:layout_height="wrap_content"
                 android:text="@string/degree_180_text"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="12sp"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintCircle="@+id/center_point"
                 app:layout_constraintCircleAngle="180"
-                app:layout_constraintCircleRadius="120dp"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintCircleRadius="@dimen/_135sdp"
+                tools:ignore="MissingConstraints"
+                android:rotation="@{model.azimuth.degrees}"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/degree_210_text"
@@ -166,11 +172,12 @@ tools:context="io.github.iso53.nothingcompass.CompassFragment">
                 android:layout_height="wrap_content"
                 android:text="@string/degree_210_text"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="12sp"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintCircle="@+id/center_point"
                 app:layout_constraintCircleAngle="210"
-                app:layout_constraintCircleRadius="120dp"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintCircleRadius="@dimen/_135sdp"
+                tools:ignore="MissingConstraints"
+                android:rotation="@{model.azimuth.degrees}"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/degree_240_text"
@@ -178,11 +185,12 @@ tools:context="io.github.iso53.nothingcompass.CompassFragment">
                 android:layout_height="wrap_content"
                 android:text="@string/degree_240_text"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="12sp"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintCircle="@+id/center_point"
                 app:layout_constraintCircleAngle="240"
-                app:layout_constraintCircleRadius="120dp"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintCircleRadius="@dimen/_135sdp"
+                tools:ignore="MissingConstraints"
+                android:rotation="@{model.azimuth.degrees}"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/degree_270_text"
@@ -190,11 +198,12 @@ tools:context="io.github.iso53.nothingcompass.CompassFragment">
                 android:layout_height="wrap_content"
                 android:text="@string/degree_270_text"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="12sp"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintCircle="@+id/center_point"
                 app:layout_constraintCircleAngle="270"
-                app:layout_constraintCircleRadius="120dp"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintCircleRadius="@dimen/_135sdp"
+                tools:ignore="MissingConstraints"
+                android:rotation="@{model.azimuth.degrees}"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/degree_300_text"
@@ -202,11 +211,12 @@ tools:context="io.github.iso53.nothingcompass.CompassFragment">
                 android:layout_height="wrap_content"
                 android:text="@string/degree_300_text"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="12sp"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintCircle="@+id/center_point"
                 app:layout_constraintCircleAngle="300"
-                app:layout_constraintCircleRadius="120dp"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintCircleRadius="@dimen/_135sdp"
+                tools:ignore="MissingConstraints"
+                android:rotation="@{model.azimuth.degrees}"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/degree_330_text"
@@ -214,11 +224,12 @@ tools:context="io.github.iso53.nothingcompass.CompassFragment">
                 android:layout_height="wrap_content"
                 android:text="@string/degree_330_text"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="12sp"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintCircle="@+id/center_point"
                 app:layout_constraintCircleAngle="330"
-                app:layout_constraintCircleRadius="120dp"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintCircleRadius="@dimen/_135sdp"
+                tools:ignore="MissingConstraints"
+                android:rotation="@{model.azimuth.degrees}"/>
 
             <!-- Direction Labels -->
             <com.google.android.material.textview.MaterialTextView
@@ -227,12 +238,13 @@ tools:context="io.github.iso53.nothingcompass.CompassFragment">
                 android:layout_height="wrap_content"
                 android:text="@string/cardinal_direction_north_abbreviation"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="18sp"
+                android:textSize="@dimen/_25ssp"
                 android:textStyle="bold"
                 app:layout_constraintCircle="@+id/center_point"
                 app:layout_constraintCircleAngle="0"
-                app:layout_constraintCircleRadius="150dp"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintCircleRadius="@dimen/_100sdp"
+                tools:ignore="MissingConstraints"
+                android:rotation="@{model.azimuth.degrees}"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/cardinal_direction_east_text"
@@ -240,12 +252,13 @@ tools:context="io.github.iso53.nothingcompass.CompassFragment">
                 android:layout_height="wrap_content"
                 android:text="@string/cardinal_direction_east_abbreviation"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="18sp"
+                android:textSize="@dimen/_25ssp"
                 android:textStyle="bold"
                 app:layout_constraintCircle="@+id/center_point"
                 app:layout_constraintCircleAngle="90"
-                app:layout_constraintCircleRadius="150dp"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintCircleRadius="@dimen/_100sdp"
+                tools:ignore="MissingConstraints"
+                android:rotation="@{model.azimuth.degrees}"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/cardinal_direction_south_text"
@@ -253,12 +266,13 @@ tools:context="io.github.iso53.nothingcompass.CompassFragment">
                 android:layout_height="wrap_content"
                 android:text="@string/cardinal_direction_south_abbreviation"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="18sp"
+                android:textSize="@dimen/_25ssp"
                 android:textStyle="bold"
                 app:layout_constraintCircle="@+id/center_point"
                 app:layout_constraintCircleAngle="180"
-                app:layout_constraintCircleRadius="150dp"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintCircleRadius="@dimen/_100sdp"
+                tools:ignore="MissingConstraints"
+                android:rotation="@{model.azimuth.degrees}"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/cardinal_direction_west_text"
@@ -266,12 +280,13 @@ tools:context="io.github.iso53.nothingcompass.CompassFragment">
                 android:layout_height="wrap_content"
                 android:text="@string/cardinal_direction_west_abbreviation"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="18sp"
+                android:textSize="@dimen/_25ssp"
                 android:textStyle="bold"
                 app:layout_constraintCircle="@+id/center_point"
                 app:layout_constraintCircleAngle="270"
-                app:layout_constraintCircleRadius="150dp"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintCircleRadius="@dimen/_100sdp"
+                tools:ignore="MissingConstraints"
+                android:rotation="@{model.azimuth.degrees}"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

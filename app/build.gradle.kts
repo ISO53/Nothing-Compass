@@ -48,6 +48,8 @@ dependencies {
     implementation(libs.fragment)
     implementation(libs.viewpager2)
     implementation(libs.androidx.preference)
+    implementation(libs.sdp.android)
+    implementation(libs.ssp.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
