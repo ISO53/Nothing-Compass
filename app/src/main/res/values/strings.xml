@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Nothing Compass</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cardinal_direction_north">North</string>
     <string name="cardinal_direction_northeast">Northeast</string>
     <string name="cardinal_direction_east">East</string>
@@ -43,4 +41,5 @@
     <string name="error">Error</string>
     <string name="error_message">An error occurred.\\nMessage: %1$s\\nCode: %2$s</string>
     <string name="ok">OK</string>
+    <string name="empty_string"></string>
 </resources>
