@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
@@ -13,14 +12,11 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.preference.PreferenceManager;
 
-import io.github.iso53.nothingcompass.model.AppNightMode;
-
 public class PreferenceStore {
     private static final String TAG = "PreferenceStore";
 
     private final MutableLiveData<Boolean> trueNorth = new MutableLiveData<>();
     private final MutableLiveData<Boolean> hapticFeedback = new MutableLiveData<>();
-    private final MutableLiveData<AppNightMode> nightMode = new MutableLiveData<>();
     private final MutableLiveData<Boolean> accessLocationPermissionRequested = new MutableLiveData<>();
 
     private final SharedPreferences sharedPreferences;
@@ -28,7 +24,6 @@ public class PreferenceStore {
     private final SharedPreferences.OnSharedPreferenceChangeListener sharedPreferenceChangeListener;
     private final Observer<Boolean> trueNorthObserver;
     private final Observer<Boolean> hapticFeedbackObserver;
-    private final Observer<AppNightMode> nightModeObserver;
     private final Observer<Boolean> accessLocationPermissionRequestedObserver;
 
     public PreferenceStore(@NonNull Context context, @NonNull Lifecycle lifecycle) {
@@ -42,9 +37,6 @@ public class PreferenceStore {
                     break;
                 case PreferenceConstants.HAPTIC_FEEDBACK:
                     updateHapticFeedback();
-                    break;
-                case PreferenceConstants.NIGHT_MODE:
-                    updateNightMode();
                     break;
                 case PreferenceConstants.ACCESS_LOCATION_PERMISSION_REQUESTED:
                     updateAccessLocationPermissionRequested();
@@ -63,11 +55,6 @@ public class PreferenceStore {
         };
 
 
-        this.nightModeObserver = value -> {
-            sharedPreferences.edit().putString(PreferenceConstants.NIGHT_MODE, value.getPreferenceValue()).apply();
-            Log.d(TAG, "Persisted nightMode: " + value);
-        };
-
         this.accessLocationPermissionRequestedObserver = value -> {
             sharedPreferences.edit().putBoolean(PreferenceConstants.ACCESS_LOCATION_PERMISSION_REQUESTED, value).apply();
             Log.d(TAG, "Persisted accessLocationPermissionRequested: " + value);
@@ -75,7 +62,6 @@ public class PreferenceStore {
 
         updateTrueNorth();
         updateHapticFeedback();
-        updateNightMode();
         updateAccessLocationPermissionRequested();
 
         lifecycle.addObserver(new DefaultLifecycleObserver() {
@@ -83,7 +69,6 @@ public class PreferenceStore {
             public void onCreate(@NonNull LifecycleOwner owner) {
                 trueNorth.observeForever(trueNorthObserver);
                 hapticFeedback.observeForever(hapticFeedbackObserver);
-                nightMode.observeForever(nightModeObserver);
                 accessLocationPermissionRequested.observeForever(accessLocationPermissionRequestedObserver);
 
                 sharedPreferences.registerOnSharedPreferenceChangeListener(sharedPreferenceChangeListener);
@@ -95,7 +80,6 @@ public class PreferenceStore {
 
                 trueNorth.removeObserver(trueNorthObserver);
                 hapticFeedback.removeObserver(hapticFeedbackObserver);
-                nightMode.removeObserver(nightModeObserver);
                 accessLocationPermissionRequested.removeObserver(accessLocationPermissionRequestedObserver);
             }
         });
@@ -107,11 +91,6 @@ public class PreferenceStore {
 
     public MutableLiveData<Boolean> getHapticFeedback() {
         return hapticFeedback;
-    }
-
-
-    public MutableLiveData<AppNightMode> getNightMode() {
-        return nightMode;
     }
 
     public MutableLiveData<Boolean> getAccessLocationPermissionRequested() {
@@ -129,15 +108,6 @@ public class PreferenceStore {
         boolean storedValue = sharedPreferences.getBoolean(PreferenceConstants.HAPTIC_FEEDBACK, true);
         if (!Boolean.valueOf(storedValue).equals(hapticFeedback.getValue())) {
             hapticFeedback.setValue(storedValue);
-        }
-    }
-
-
-    private void updateNightMode() {
-        String storedValue = sharedPreferences.getString(PreferenceConstants.NIGHT_MODE, AppNightMode.FOLLOW_SYSTEM.getPreferenceValue());
-        AppNightMode storedNightMode = AppNightMode.forPreferenceValue(storedValue);
-        if (nightMode.getValue() != storedNightMode) {
-            nightMode.setValue(storedNightMode);
         }
     }
 

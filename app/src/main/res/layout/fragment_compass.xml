@@ -1,139 +1,289 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:context="io.github.iso53.nothingcompass.CompassFragment">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+tools:context="io.github.iso53.nothingcompass.CompassFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+<data>
+    <import type="io.github.iso53.nothingcompass.model.LocationStatus" />
+    <variable
+        name="model"
+        type="io.github.iso53.nothingcompass.view.CompassViewModel" />
+</data>
+
+<!-- SINGLE ROOT VIEW -->
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- TOP INFO -->
+    <LinearLayout
+        android:id="@+id/compassInfoContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="24dp">
+
+        <TextView
+            android:id="@+id/currentCompassDegree"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="@dimen/root_layout_padding">
+            android:layout_height="wrap_content"
+            android:text='@{String.valueOf((int) model.azimuth.degrees)}' />
 
-        <io.github.iso53.nothingcompass.view.CompassView
-                android:id="@+id/compass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hapticFeedbackEnabled="@{model.hapticFeedback}"
-                android:keepScreenOn="true"
-                app:azimuth="@{model.azimuth.degrees}"
-                app:layout_constraintBottom_toTopOf="@id/location_container"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/currentCompassDirection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text='@{model.azimuth.cardinalDirection.toString()}' />
+    </LinearLayout>
+
+    <!-- COMPASS -->
+    <FrameLayout
+        android:id="@+id/compassContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/location_container"
-                android:layout_width="match_parent"
+            android:id="@+id/rotatingGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:rotation="@{-model.azimuth.degrees}">
+
+            <ImageView
+                android:id="@+id/compass_spiral"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/compass_spiral"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.8" />
+
+            <!-- Center point for circular constraints -->
+            <View
+                android:id="@+id/center_point"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Degree labels -->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/degree_0_text"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="@{model.trueNorth ? android.view.View.VISIBLE : android.view.View.INVISIBLE}"
-                app:layout_constraintBottom_toTopOf="@id/declination_text"
-                app:layout_constraintTop_toBottomOf="@id/compass">
+                android:text="@string/degree_0_text"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="12sp"
+                app:layout_constraintCircle="@+id/center_point"
+                app:layout_constraintCircleAngle="0"
+                app:layout_constraintCircleRadius="120dp"
+                tools:ignore="MissingConstraints" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="@{model.locationStatus == LocationStatus.NOT_PRESENT ? android.view.View.VISIBLE : android.view.View.INVISIBLE}"
-                    app:layout_constraintTop_toTopOf="parent">
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/degree_30_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/degree_30_text"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="12sp"
+                app:layout_constraintCircle="@+id/center_point"
+                app:layout_constraintCircleAngle="30"
+                app:layout_constraintCircleRadius="120dp"
+                tools:ignore="MissingConstraints" />
 
-                <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/location_not_present_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableTop="@drawable/ic_warning"
-                        android:drawableTint="?android:attr/textColorHighlight"
-                        android:gravity="center"
-                        android:text="@string/location_not_present"
-                        android:textAppearance="@android:style/TextAppearance.Material.Medium"
-                        android:textColor="?android:attr/textColorHighlight"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/degree_60_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/degree_60_text"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="12sp"
+                app:layout_constraintCircle="@+id/center_point"
+                app:layout_constraintCircleAngle="60"
+                app:layout_constraintCircleRadius="120dp"
+                tools:ignore="MissingConstraints" />
 
-                <com.google.android.material.button.MaterialButton
-                        android:id="@+id/location_reload_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/location_reload"
-                        app:icon="@drawable/ic_refresh"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/location_not_present_text" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/degree_90_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/degree_90_text"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="12sp"
+                app:layout_constraintCircle="@+id/center_point"
+                app:layout_constraintCircleAngle="90"
+                app:layout_constraintCircleRadius="120dp"
+                tools:ignore="MissingConstraints" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/degree_120_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/degree_120_text"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="12sp"
+                app:layout_constraintCircle="@+id/center_point"
+                app:layout_constraintCircleAngle="120"
+                app:layout_constraintCircleRadius="120dp"
+                tools:ignore="MissingConstraints" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="@{(model.locationStatus == LocationStatus.LOADING) ? android.view.View.VISIBLE : android.view.View.INVISIBLE}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/degree_150_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/degree_150_text"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="12sp"
+                app:layout_constraintCircle="@+id/center_point"
+                app:layout_constraintCircleAngle="150"
+                app:layout_constraintCircleRadius="120dp"
+                tools:ignore="MissingConstraints" />
 
-                <com.google.android.material.progressindicator.CircularProgressIndicator
-                        android:id="@+id/location_loading_indicator"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:indeterminate="true"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/degree_180_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/degree_180_text"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="12sp"
+                app:layout_constraintCircle="@+id/center_point"
+                app:layout_constraintCircleAngle="180"
+                app:layout_constraintCircleRadius="120dp"
+                tools:ignore="MissingConstraints" />
 
-                <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/location_loading_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/location_loading"
-                        android:textAppearance="@android:style/TextAppearance.Material.Medium"
-                        android:textColor="?android:attr/textColorPrimary"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/location_loading_indicator" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/degree_210_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/degree_210_text"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="12sp"
+                app:layout_constraintCircle="@+id/center_point"
+                app:layout_constraintCircleAngle="210"
+                app:layout_constraintCircleRadius="120dp"
+                tools:ignore="MissingConstraints" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/degree_240_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/degree_240_text"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="12sp"
+                app:layout_constraintCircle="@+id/center_point"
+                app:layout_constraintCircleAngle="240"
+                app:layout_constraintCircleRadius="120dp"
+                tools:ignore="MissingConstraints" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="@{model.locationStatus == LocationStatus.PERMISSION_DENIED ? android.view.View.VISIBLE : android.view.View.INVISIBLE}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/degree_270_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/degree_270_text"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="12sp"
+                app:layout_constraintCircle="@+id/center_point"
+                app:layout_constraintCircleAngle="270"
+                app:layout_constraintCircleRadius="120dp"
+                tools:ignore="MissingConstraints" />
 
-                <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/location_missing_permission_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableTop="@drawable/ic_warning"
-                        android:drawableTint="?android:attr/textColorHighlight"
-                        android:gravity="center"
-                        android:text="@string/access_location_permission_denied"
-                        android:textAppearance="@android:style/TextAppearance.Material.Medium"
-                        android:textColor="?android:attr/textColorHighlight"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/degree_300_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/degree_300_text"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="12sp"
+                app:layout_constraintCircle="@+id/center_point"
+                app:layout_constraintCircleAngle="300"
+                app:layout_constraintCircleRadius="120dp"
+                tools:ignore="MissingConstraints" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/degree_330_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/degree_330_text"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="12sp"
+                app:layout_constraintCircle="@+id/center_point"
+                app:layout_constraintCircleAngle="330"
+                app:layout_constraintCircleRadius="120dp"
+                tools:ignore="MissingConstraints" />
+
+            <!-- Direction Labels -->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/cardinal_direction_north_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cardinal_direction_north_abbreviation"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintCircle="@+id/center_point"
+                app:layout_constraintCircleAngle="0"
+                app:layout_constraintCircleRadius="150dp"
+                tools:ignore="MissingConstraints" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/cardinal_direction_east_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cardinal_direction_east_abbreviation"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintCircle="@+id/center_point"
+                app:layout_constraintCircleAngle="90"
+                app:layout_constraintCircleRadius="150dp"
+                tools:ignore="MissingConstraints" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/cardinal_direction_south_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cardinal_direction_south_abbreviation"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintCircle="@+id/center_point"
+                app:layout_constraintCircleAngle="180"
+                app:layout_constraintCircleRadius="150dp"
+                tools:ignore="MissingConstraints" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/cardinal_direction_west_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cardinal_direction_west_abbreviation"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintCircle="@+id/center_point"
+                app:layout_constraintCircleAngle="270"
+                app:layout_constraintCircleRadius="150dp"
+                tools:ignore="MissingConstraints" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/declination_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTint="?android:attr/textColorHint"
-                android:text="@{model.trueNorth == true &amp;&amp; model.locationStatus == LocationStatus.PRESENT ? @string/true_north : @string/magnetic_north}"
-                android:textAppearance="@android:style/TextAppearance.Material.Small"
-                android:textColor="?android:attr/textColorHint"
-                app:drawableStartCompat="@drawable/ic_compass"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/device_heading_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/device_heading_indicator" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
 
-    <data>
-        <import type="io.github.iso53.nothingcompass.model.LocationStatus" />
-        <variable
-                name="model"
-                type="io.github.iso53.nothingcompass.view.CompassViewModel" />
-    </data>
+</FrameLayout>
 
 </layout>

@@ -1,4 +1,4 @@
-package io.github.iso53.nothingcompass;
+package io.github.iso53.nothingcompass.fragment;
 
 import android.Manifest;
 import android.content.Context;
@@ -11,8 +11,17 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.core.location.LocationManagerCompat;
+import androidx.core.view.MenuProvider;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.ViewModelProvider;
+
 import android.os.CancellationSignal;
-import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -22,23 +31,13 @@ import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresPermission;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.location.LocationManagerCompat;
-import androidx.core.view.MenuProvider;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.ViewModelProvider;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Executor;
 
+import io.github.iso53.nothingcompass.R;
 import io.github.iso53.nothingcompass.databinding.FragmentCompassBinding;
-import io.github.iso53.nothingcompass.databinding.SensorAlertDialogViewBinding;
 import io.github.iso53.nothingcompass.model.AppError;
 import io.github.iso53.nothingcompass.model.Azimuth;
 import io.github.iso53.nothingcompass.model.DisplayRotation;
@@ -48,13 +47,11 @@ import io.github.iso53.nothingcompass.model.SensorAccuracy;
 import io.github.iso53.nothingcompass.preference.PreferenceStore;
 import io.github.iso53.nothingcompass.util.MathUtils;
 import io.github.iso53.nothingcompass.view.CompassViewModel;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class CompassFragment extends Fragment {
-    private static final String TAG = "CompassFragment";
 
     private CompassViewModel compassViewModel;
-    private final CompassMenuProvider compassMenuProvider = new CompassMenuProvider();
+    // private final CompassMenuProvider compassMenuProvider = new CompassMenuProvider();
     private final CompassSensorEventListener compassSensorEventListener = new CompassSensorEventListener();
 
     private FragmentCompassBinding binding;
@@ -62,6 +59,7 @@ public class CompassFragment extends Fragment {
     private SensorManager sensorManager;
     private LocationManager locationManager;
     private CancellationSignal locationRequestCancellationSignal;
+    private androidx.appcompat.app.AlertDialog activeDialog;
 
     @Nullable
     @Override
@@ -74,10 +72,9 @@ public class CompassFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         compassViewModel = new ViewModelProvider(this).get(CompassViewModel.class);
-        
+
         binding.setLifecycleOwner(getViewLifecycleOwner());
         binding.setModel(compassViewModel);
-        binding.locationReloadButton.setOnClickListener(v -> requestLocation());
 
         preferenceStore = new PreferenceStore(requireContext(), getViewLifecycleOwner().getLifecycle());
         preferenceStore.getTrueNorth().observe(getViewLifecycleOwner(), value -> compassViewModel.getTrueNorth().setValue(value));
@@ -86,7 +83,74 @@ public class CompassFragment extends Fragment {
         sensorManager = (SensorManager) requireContext().getSystemService(Context.SENSOR_SERVICE);
         locationManager = (LocationManager) requireContext().getSystemService(Context.LOCATION_SERVICE);
 
-        requireActivity().addMenuProvider(compassMenuProvider, getViewLifecycleOwner(), Lifecycle.State.RESUMED);
+        // requireActivity().addMenuProvider(compassMenuProvider, getViewLifecycleOwner(), Lifecycle.State.RESUMED);
+
+        setupObservers();
+    }
+
+    private void setupObservers() {
+        compassViewModel.getLocationStatus().observe(getViewLifecycleOwner(), status -> {
+            if (activeDialog != null && activeDialog.isShowing()) {
+                activeDialog.dismiss();
+                activeDialog = null;
+            }
+
+            if (Boolean.FALSE.equals(compassViewModel.getTrueNorth().getValue())) {
+                return;
+            }
+
+            switch (status) {
+                case LOADING:
+                    showLocationLoadingDialog();
+                    break;
+                case NOT_PRESENT:
+                    showLocationNotPresentDialog();
+                    break;
+                case PERMISSION_DENIED:
+                    showLocationPermissionDeniedDialog();
+                    break;
+                case PRESENT:
+                default:
+                    // No dialog needed
+                    break;
+            }
+        });
+
+        compassViewModel.getTrueNorth().observe(getViewLifecycleOwner(), isTrueNorth -> {
+            if (Boolean.FALSE.equals(isTrueNorth)) {
+                if (activeDialog != null && activeDialog.isShowing()) {
+                    activeDialog.dismiss();
+                    activeDialog = null;
+                }
+            } else if (compassViewModel.getLocation().getValue() == null) {
+                requestLocation();
+            }
+        });
+    }
+
+    private void showLocationLoadingDialog() {
+        activeDialog = new MaterialAlertDialogBuilder(requireContext())
+                .setTitle(R.string.element_location)
+                .setMessage(R.string.location_loading)
+                .setCancelable(false)
+                .show();
+    }
+
+    private void showLocationNotPresentDialog() {
+        activeDialog = new MaterialAlertDialogBuilder(requireContext())
+                .setTitle(R.string.element_location)
+                .setMessage(R.string.location_not_present)
+                .setPositiveButton(R.string.location_reload, (dialog, which) -> requestLocation())
+                .setNegativeButton(android.R.string.cancel, (dialog, which) -> dialog.dismiss())
+                .show();
+    }
+
+    private void showLocationPermissionDeniedDialog() {
+        activeDialog = new MaterialAlertDialogBuilder(requireContext())
+                .setTitle(R.string.element_location)
+                .setMessage(R.string.access_location_permission_denied)
+                .setPositiveButton(android.R.string.ok, (dialog, which) -> dialog.dismiss())
+                .show();
     }
 
     @Override
@@ -217,6 +281,7 @@ public class CompassFragment extends Fragment {
                 .show();
     }
 
+    /*
     private class CompassMenuProvider implements MenuProvider {
         @Override
         public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
@@ -243,7 +308,7 @@ public class CompassFragment extends Fragment {
                                 R.anim.slide_in_left,
                                 R.anim.slide_out_right
                         )
-                        .replace(R.id.main, new SettingsFragment())
+                        .add(R.id.root_coordinator, new SettingsFragment())
                         .addToBackStack(null)
                         .commit();
                 return true;
@@ -252,19 +317,18 @@ public class CompassFragment extends Fragment {
         }
 
         private void showSensorStatusPopup() {
-            SensorAlertDialogViewBinding dialogBinding = SensorAlertDialogViewBinding.inflate(getLayoutInflater());
-            dialogBinding.setModel(compassViewModel);
-            dialogBinding.setLifecycleOwner(getViewLifecycleOwner());
-
             new MaterialAlertDialogBuilder(requireContext())
                     .setTitle(R.string.sensor_status)
-                    .setView(dialogBinding.getRoot())
+                    .setMessage(R.string.sensor_calibration_text)
                     .setPositiveButton(R.string.ok, (dialog, which) -> dialog.dismiss())
                     .show();
         }
-    }
+    } */
 
     private class CompassSensorEventListener implements SensorEventListener {
+
+        private float currentDegree = 0f;
+
         @Override
         public void onSensorChanged(SensorEvent event) {
             if (event.sensor.getType() == Sensor.TYPE_ROTATION_VECTOR) {
@@ -284,13 +348,23 @@ public class CompassFragment extends Fragment {
             DisplayRotation displayRotation = getDisplayRotation();
             Azimuth magneticAzimuth = MathUtils.calculateAzimuth(rotationVector, displayRotation);
 
+            float target = magneticAzimuth.getDegrees();
             if (Boolean.TRUE.equals(compassViewModel.getTrueNorth().getValue())) {
                 Location location = compassViewModel.getLocation().getValue();
                 float declination = location != null ? MathUtils.getMagneticDeclination(location) : 0f;
-                compassViewModel.getAzimuth().setValue(magneticAzimuth.plus(declination));
-            } else {
-                compassViewModel.getAzimuth().setValue(magneticAzimuth);
+                target += declination;
             }
+
+            float diff = target - currentDegree;
+            while (diff < -180) diff += 360;
+            while (diff > 180) diff -= 360;
+
+            currentDegree += diff * 0.5f;
+
+            while (currentDegree < 0) currentDegree += 360;
+            while (currentDegree >= 360) currentDegree -= 360;
+
+            compassViewModel.getAzimuth().setValue(new Azimuth(currentDegree));
         }
 
         private DisplayRotation getDisplayRotation() {
@@ -303,21 +377,32 @@ public class CompassFragment extends Fragment {
             }
 
             switch (rotation) {
-                case Surface.ROTATION_90: return DisplayRotation.ROTATION_90;
-                case Surface.ROTATION_180: return DisplayRotation.ROTATION_180;
-                case Surface.ROTATION_270: return DisplayRotation.ROTATION_270;
-                default: return DisplayRotation.ROTATION_0;
+                case Surface.ROTATION_90:
+                    return DisplayRotation.ROTATION_90;
+                case Surface.ROTATION_180:
+                    return DisplayRotation.ROTATION_180;
+                case Surface.ROTATION_270:
+                    return DisplayRotation.ROTATION_270;
+                default:
+                    return DisplayRotation.ROTATION_0;
             }
         }
 
         private SensorAccuracy adaptSensorAccuracy(int accuracy) {
             switch (accuracy) {
-                case SensorManager.SENSOR_STATUS_UNRELIABLE: return SensorAccuracy.UNRELIABLE;
-                case SensorManager.SENSOR_STATUS_ACCURACY_LOW: return SensorAccuracy.LOW;
-                case SensorManager.SENSOR_STATUS_ACCURACY_MEDIUM: return SensorAccuracy.MEDIUM;
-                case SensorManager.SENSOR_STATUS_ACCURACY_HIGH: return SensorAccuracy.HIGH;
-                default: return SensorAccuracy.NO_CONTACT;
+                case SensorManager.SENSOR_STATUS_UNRELIABLE:
+                    return SensorAccuracy.UNRELIABLE;
+                case SensorManager.SENSOR_STATUS_ACCURACY_LOW:
+                    return SensorAccuracy.LOW;
+                case SensorManager.SENSOR_STATUS_ACCURACY_MEDIUM:
+                    return SensorAccuracy.MEDIUM;
+                case SensorManager.SENSOR_STATUS_ACCURACY_HIGH:
+                    return SensorAccuracy.HIGH;
+                default:
+                    return SensorAccuracy.NO_CONTACT;
             }
         }
     }
+
+
 }

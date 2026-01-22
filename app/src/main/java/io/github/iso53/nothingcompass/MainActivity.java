@@ -3,10 +3,17 @@ package io.github.iso53.nothingcompass;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
+
+import io.github.iso53.nothingcompass.fragment.CompassFragment;
+import io.github.iso53.nothingcompass.fragment.SpiritLevelFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,21 +22,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        setSupportActionBar(findViewById(R.id.toolbar));
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-        }
-        
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.main, new CompassFragment())
-                    .commit();
-        }
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        ViewPager2 viewPager2 = findViewById(R.id.mainViewPager2);
+        viewPager2.setAdapter(new FragmentStateAdapter(this) {
+            @NonNull
+            @Override
+            public Fragment createFragment(int position) {
+                switch (position) {
+                    case 0:
+                        return new CompassFragment();
+                    case 1:
+                        return new SpiritLevelFragment();
+                    default:
+                        throw new IllegalStateException("Invalid position.");
+                }
+            }
+
+            @Override
+            public int getItemCount() {
+                return 2;
+            }
         });
     }
 }

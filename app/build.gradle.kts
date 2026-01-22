@@ -27,6 +27,7 @@ android {
             )
         }
     }
+
     buildFeatures {
         viewBinding = true
         dataBinding = true
@@ -44,6 +45,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.fragment)
+    implementation(libs.viewpager2)
     implementation(libs.androidx.preference)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

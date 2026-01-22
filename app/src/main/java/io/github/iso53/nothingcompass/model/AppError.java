@@ -1,6 +1,7 @@
 package io.github.iso53.nothingcompass.model;
 
 import androidx.annotation.StringRes;
+
 import io.github.iso53.nothingcompass.R;
 
 public enum AppError {

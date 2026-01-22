@@ -1,5 +1,7 @@
 package io.github.iso53.nothingcompass.model;
 
+import androidx.annotation.NonNull;
+
 import java.util.Objects;
 
 public final class RotationVector {
@@ -44,6 +46,7 @@ public final class RotationVector {
         return Objects.hash(x, y, z);
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "RotationVector(x=" + x + ", y=" + y + ", z=" + z + ")";

@@ -5,10 +5,6 @@ public final class PreferenceConstants {
 
     public static final String TRUE_NORTH = "true_north";
     public static final String HAPTIC_FEEDBACK = "haptic_feedback";
-    public static final String NIGHT_MODE = "night_mode";
-    public static final String NIGHT_MODE_VALUE_FOLLOW_SYSTEM = "follow_system";
-    public static final String NIGHT_MODE_VALUE_NO = "no";
-    public static final String NIGHT_MODE_VALUE_YES = "yes";
     public static final String ACCESS_LOCATION_PERMISSION_REQUESTED = "access_location_permission_requested";
     public static final String THIRD_PARTY_LICENSES = "third_party_licenses";
     public static final String VERSION = "version";

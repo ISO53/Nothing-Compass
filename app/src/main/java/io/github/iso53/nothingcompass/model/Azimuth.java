@@ -51,6 +51,7 @@ public final class Azimuth implements Comparable<Azimuth> {
         return Objects.hash(degrees);
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Azimuth(degrees=" + degrees + ")";
