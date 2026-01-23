@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import java.util.Objects;
+
 import io.github.iso53.nothingcompass.fragment.CompassFragment;
 import io.github.iso53.nothingcompass.fragment.SpiritLevelFragment;
 
@@ -31,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         setSupportActionBar(findViewById(R.id.mainToolbar));
+
+        // Remove app name from toolbar
+        Objects.requireNonNull(this.getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
         ViewPager2 viewPager2 = findViewById(R.id.mainViewPager2);
         viewPager2.setAdapter(new FragmentStateAdapter(this) {
