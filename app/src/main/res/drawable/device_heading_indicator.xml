@@ -6,18 +6,18 @@
     android:viewportHeight="200">
 
     <!-- vertical dots (7) -->
-    <path android:fillColor="?attr/colorPrimary" android:pathData="M100,125 a5,5 0 1,0 0.01,0" />
-    <path android:fillColor="?attr/colorPrimary" android:pathData="M100,115 a5,5 0 1,0 0.01,0" />
-    <path android:fillColor="?attr/colorPrimary" android:pathData="M100,105 a5,5 0 1,0 0.01,0" />
-    <path android:fillColor="?attr/colorPrimary" android:pathData="M100,95 a5,5 0 1,0 0.01,0" />
-    <path android:fillColor="?attr/colorPrimary" android:pathData="M100,85 a5,5 0 1,0 0.01,0" />
-    <path android:fillColor="?attr/colorPrimary" android:pathData="M100,75 a5,5 0 1,0 0.01,0" />
-    <path android:fillColor="?attr/colorPrimary" android:pathData="M100,65 a5,5 0 1,0 0.01,0" />
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M100,120 a4,4 0 1,0 0.01,0" />
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M100,112 a4,4 0 1,0 0.01,0" />
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M100,104 a4,4 0 1,0 0.01,0" />
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M100,96 a4,4 0 1,0 0.01,0" />
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M100,88 a4,4 0 1,0 0.01,0" />
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M100,80 a4,4 0 1,0 0.01,0" />
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M100,72 a4,4 0 1,0 0.01,0" />
 
     <!-- arrow head side dots -->
-    <path android:fillColor="?attr/colorPrimary" android:pathData="M90,75 a5,5 0 1,0 0.01,0" />
-    <path android:fillColor="?attr/colorPrimary" android:pathData="M80,85 a5,5 0 1,0 0.01,0" />
-    <path android:fillColor="?attr/colorPrimary" android:pathData="M110,75 a5,5 0 1,0 0.01,0" />
-    <path android:fillColor="?attr/colorPrimary" android:pathData="M120,85 a5,5 0 1,0 0.01,0" />
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M92,80 a4,4 0 1,0 0.01,0" />
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M84,88 a4,4 0 1,0 0.01,0" />
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M108,80 a4,4 0 1,0 0.01,0" />
+    <path android:fillColor="?attr/colorPrimary" android:pathData="M116,88 a4,4 0 1,0 0.01,0" />
 
 </vector>
