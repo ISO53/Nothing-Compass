@@ -1,6 +1,8 @@
 package io.github.iso53.nothingcompass;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -28,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        setSupportActionBar(findViewById(R.id.mainToolbar));
+
         ViewPager2 viewPager2 = findViewById(R.id.mainViewPager2);
         viewPager2.setAdapter(new FragmentStateAdapter(this) {
             @NonNull
@@ -48,5 +52,21 @@ public class MainActivity extends AppCompatActivity {
                 return 2;
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_options) {
+            android.content.Intent intent = new android.content.Intent(this, OptionsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

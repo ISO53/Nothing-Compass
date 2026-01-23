@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    tools:context=".OptionsActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/optionsToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/colorBackground"
+        android:elevation="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_back"
+        app:title="@string/options_hub_title"
+        app:titleTextAppearance="@style/TextAppearance.Material3.TitleLarge" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/optionsToolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Category: App -->
+            <TextView
+                style="@style/TextAppearance.Material3.LabelMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/category_app"
+                android:textColor="?android:attr/textColorSecondary" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="?attr/colorSurfaceVariant"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include
+                        android:id="@+id/itemSettings"
+                        layout="@layout/item_hub_option" />
+
+                    <include
+                        android:id="@+id/itemVersionUpdate"
+                        layout="@layout/item_hub_option" />
+
+                    <include
+                        android:id="@+id/itemAbout"
+                        layout="@layout/item_hub_option" />
+                    
+                    <include
+                        android:id="@+id/itemAuthor"
+                        layout="@layout/item_hub_option" />
+
+                    <include
+                        android:id="@+id/itemSourceCode"
+                        layout="@layout/item_hub_option" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Category: Legal & Support -->
+            <TextView
+                style="@style/TextAppearance.Material3.LabelMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/category_support"
+                android:textColor="?android:attr/textColorSecondary" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="?attr/colorSurfaceVariant"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include
+                        android:id="@+id/itemLicense"
+                        layout="@layout/item_hub_option" />
+
+                    <include
+                        android:id="@+id/itemThirdPartyLicenses"
+                        layout="@layout/item_hub_option" />
+
+                    <include
+                        android:id="@+id/itemManagePermission"
+                        layout="@layout/item_hub_option" />
+
+                    <include
+                        android:id="@+id/itemHelpFeedback"
+                        layout="@layout/item_hub_option" />
+
+                    <include
+                        android:id="@+id/itemRateApp"
+                        layout="@layout/item_hub_option" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
