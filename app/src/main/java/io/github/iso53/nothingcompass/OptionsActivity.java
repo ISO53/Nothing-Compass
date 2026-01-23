@@ -43,7 +43,7 @@ public class OptionsActivity extends AppCompatActivity {
         bindItem(R.id.itemSourceCode, R.drawable.ic_code, R.string.item_source_code, 0);
 
         // Legal & Support
-        bindItem(R.id.itemLicense, R.drawable.ic_description, R.string.item_license, 0);
+        bindItem(R.id.itemLicense, R.drawable.ic_license, R.string.item_license, 0);
         bindItem(R.id.itemThirdPartyLicenses, R.drawable.ic_verified, R.string.item_third_party_licenses, 0);
         bindItem(R.id.itemManagePermission, R.drawable.ic_permission, R.string.item_manage_permission, 0);
         bindItem(R.id.itemHelpFeedback, R.drawable.ic_help, R.string.item_help_feedback, 0);
