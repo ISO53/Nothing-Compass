@@ -286,7 +286,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:orientation="vertical"
-            android:paddingTop="@dimen/_400sdp">
+            android:paddingBottom="@dimen/_400sdp">
 
             <TextView
                 android:id="@+id/currentCompassDegree"
