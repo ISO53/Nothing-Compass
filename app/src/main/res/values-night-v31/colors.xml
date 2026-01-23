@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- True Dark (Pitch Black) Theme Colors -->
+    <color name="colorPrimary">#BB86FC</color>
+    <color name="colorOnPrimary">#000000</color>
+    <color name="colorPrimaryContainer">#6200EE</color>
+    <color name="colorOnPrimaryContainer">#FFFFFF</color>
+    <color name="colorSecondary">#03DAC6</color>
+    <color name="colorOnSecondary">#000000</color>
+    <color name="colorBackground">#000000</color> <!-- Pitch Black -->
+    <color name="colorOnBackground">#FFFFFF</color>
+    <color name="colorSurface">#000000</color> <!-- Pitch Black -->
+    <color name="colorOnSurface">#FFFFFF</color>
+</resources>

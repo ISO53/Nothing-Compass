@@ -1,7 +1,5 @@
 <resources>
-    <!-- Base application theme. -->
-    <style name="Base.Theme.NothingCompass" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
-    </style>
+    <!-- The dark theme inherits from the base theme.
+         The system automatically uses colors from the values-night directory. -->
+    <style name="Theme.NothingCompass" parent="Base.Theme.NothingCompass" />
 </resources>
