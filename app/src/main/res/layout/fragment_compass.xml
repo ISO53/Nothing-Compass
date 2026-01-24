@@ -25,6 +25,18 @@
             android:layout_height="match_parent"
             android:layout_gravity="center">
 
+            <ImageView
+                android:id="@+id/compass_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/compass_indicator"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/rotatingGroup"
                 android:layout_width="match_parent"
@@ -292,17 +304,19 @@
                 android:id="@+id/currentCompassDegree"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
                 android:gravity="center"
-                android:textSize="@dimen/_40ssp"
-                android:text='@{String.valueOf((int) model.azimuth.degrees) + "°"}' />
+                android:text='@{String.valueOf((int) model.azimuth.degrees) + "°"}'
+                android:textSize="@dimen/_40ssp" />
 
             <TextView
                 android:id="@+id/currentCompassDirection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textSize="@dimen/_16ssp"
-                android:text="@{model.azimuth.cardinalDirection.labelResourceId}" />
+                android:text="@{model.azimuth.cardinalDirection.labelResourceId}"
+                android:textColor="@color/colorSecondary"
+                android:textSize="@dimen/_16ssp" />
         </LinearLayout>
 
     </FrameLayout>
