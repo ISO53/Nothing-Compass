@@ -54,4 +54,9 @@
     <string name="item_third_party_licenses">Third Party Licenses</string>
     <string name="item_license">License</string>
     <string name="item_source_code">Source Code</string>
+    <string name="about_title">About</string>
+    <string name="about_description">A minimal compass app inspired by Nothing aesthetic, designed for precision and simplicity.</string>
+    <string name="about_version">Version %1$s</string>
+    <string name="about_developed_by">Developed with passion by iso53</string>
+    <string name="about_legal_disclaimer">This application is provided "as is" without warranty of any kind. The developer is not responsible for any inaccuracies or issues arising from its use.</string>
 </resources>

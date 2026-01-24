@@ -46,7 +46,7 @@ public class OptionsActivity extends AppCompatActivity {
                 R.string.item_version_update_sub, v -> openPlayStore());
 
         bindItem(R.id.itemAbout, R.drawable.ic_about, R.string.item_about, 0, v -> {
-            // TODO: Show about dialog/activity
+            startActivity(new Intent(this, AboutActivity.class));
         });
 
         bindItem(R.id.itemAuthor, R.drawable.ic_person, R.string.item_author, 0, v -> {
