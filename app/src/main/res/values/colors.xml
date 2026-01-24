@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Light Theme Colors -->
-    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimary">#D71921</color> <!-- red accent from Nothing palette -->
     <color name="colorOnPrimary">#FFFFFF</color>
-    <color name="colorPrimaryContainer">#BB86FC</color>
+    <color name="colorPrimaryContainer">#FCECEA</color> <!-- soft light red container -->
     <color name="colorOnPrimaryContainer">#000000</color>
-    <color name="colorSecondary">#03DAC6</color>
-    <color name="colorOnSecondary">#000000</color>
-    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorSecondary">#6E6E6E</color> <!-- neutral gray -->
+    <color name="colorOnSecondary">#FFFFFF</color>
+    <color name="colorBackground">#FFFFFF</color> <!-- standard light background -->
     <color name="colorOnBackground">#000000</color>
     <color name="colorSurface">#FFFFFF</color>
     <color name="colorOnSurface">#000000</color>

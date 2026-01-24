@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Dark Theme Colors (Standard Material Dark) -->
-    <color name="colorPrimary">#BB86FC</color>
+    <color name="colorPrimary">#D71921</color>
     <color name="colorOnPrimary">#000000</color>
-    <color name="colorPrimaryContainer">#6200EE</color>
+    <color name="colorPrimaryContainer">#8A1A1F</color>
     <color name="colorOnPrimaryContainer">#FFFFFF</color>
-    <color name="colorSecondary">#03DAC6</color>
+    <color name="colorSecondary">#A3A3A3</color>
     <color name="colorOnSecondary">#000000</color>
-    <color name="colorBackground">#121212</color>
+    <color name="colorBackground">#1B1B1D</color>
     <color name="colorOnBackground">#FFFFFF</color>
-    <color name="colorSurface">#121212</color>
+    <color name="colorSurface">#2A2A2C</color>
     <color name="colorOnSurface">#FFFFFF</color>
 </resources>
