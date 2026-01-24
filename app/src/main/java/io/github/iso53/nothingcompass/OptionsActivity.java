@@ -59,7 +59,7 @@ public class OptionsActivity extends AppCompatActivity {
 
         // Legal & Support
         bindItem(R.id.itemLicense, R.drawable.ic_license, R.string.item_license, 0, v -> {
-            // TODO: Show license
+            openUrl("https://github.com/iso53/Nothing-Compass/blob/main/LICENSE.md");
         });
 
         bindItem(R.id.itemThirdPartyLicenses, R.drawable.ic_verified, R.string.item_third_party_licenses, 0, v -> {
