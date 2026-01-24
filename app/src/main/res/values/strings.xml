@@ -39,7 +39,7 @@
     <string name="error">Error</string>
     <string name="error_message">An error occurred.\\nMessage: %1$s\\nCode: %2$s</string>
     <string name="ok">OK</string>
-    <string name="options_hub_title">My page</string>
+    <string name="options_hub_title">Preferences</string>
     <string name="category_app">App</string>
     <string name="category_data_security">Data and security</string>
     <string name="category_support">Support</string>
