@@ -306,7 +306,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center"
-                android:text='@{String.valueOf((int) model.azimuth.degrees) + "°"}'
+                android:text='@{" " + String.valueOf((int) model.azimuth.degrees) + "°"}'
                 android:textSize="@dimen/_40ssp" />
 
             <TextView
