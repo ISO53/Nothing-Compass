@@ -40,11 +40,11 @@ import io.github.iso53.nothingcompass.model.RotationVector;
 import io.github.iso53.nothingcompass.model.SensorAccuracy;
 import io.github.iso53.nothingcompass.preference.PreferenceStore;
 import io.github.iso53.nothingcompass.util.MathUtils;
-import io.github.iso53.nothingcompass.view.CompassViewModel;
+import io.github.iso53.nothingcompass.view.CompassView;
 
 public class CompassFragment extends Fragment {
 
-    private CompassViewModel compassViewModel;
+    private CompassView compassView;
     private final CompassSensorEventListener compassSensorEventListener = new CompassSensorEventListener();
 
     private FragmentCompassBinding binding;
@@ -65,16 +65,16 @@ public class CompassFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        compassViewModel = new ViewModelProvider(this).get(CompassViewModel.class);
+        compassView = new ViewModelProvider(this).get(CompassView.class);
 
         binding.setLifecycleOwner(getViewLifecycleOwner());
-        binding.setModel(compassViewModel);
+        binding.setModel(compassView);
 
         preferenceStore = new PreferenceStore(requireContext(), getViewLifecycleOwner().getLifecycle());
         preferenceStore.getTrueNorth().observe(getViewLifecycleOwner(),
-                value -> compassViewModel.getTrueNorth().setValue(value));
+                value -> compassView.getTrueNorth().setValue(value));
         preferenceStore.getHapticFeedback().observe(getViewLifecycleOwner(),
-                value -> compassViewModel.getHapticFeedback().setValue(value));
+                value -> compassView.getHapticFeedback().setValue(value));
 
         sensorManager = (SensorManager) requireContext().getSystemService(Context.SENSOR_SERVICE);
         locationManager = (LocationManager) requireContext().getSystemService(Context.LOCATION_SERVICE);
@@ -83,13 +83,13 @@ public class CompassFragment extends Fragment {
     }
 
     private void setupObservers() {
-        compassViewModel.getLocationStatus().observe(getViewLifecycleOwner(), status -> {
+        compassView.getLocationStatus().observe(getViewLifecycleOwner(), status -> {
             if (activeDialog != null && activeDialog.isShowing()) {
                 activeDialog.dismiss();
                 activeDialog = null;
             }
 
-            if (Boolean.FALSE.equals(compassViewModel.getTrueNorth().getValue())) {
+            if (Boolean.FALSE.equals(compassView.getTrueNorth().getValue())) {
                 return;
             }
 
@@ -110,13 +110,13 @@ public class CompassFragment extends Fragment {
             }
         });
 
-        compassViewModel.getTrueNorth().observe(getViewLifecycleOwner(), isTrueNorth -> {
+        compassView.getTrueNorth().observe(getViewLifecycleOwner(), isTrueNorth -> {
             if (Boolean.FALSE.equals(isTrueNorth)) {
                 if (activeDialog != null && activeDialog.isShowing()) {
                     activeDialog.dismiss();
                     activeDialog = null;
                 }
-            } else if (compassViewModel.getLocation().getValue() == null) {
+            } else if (compassView.getLocation().getValue() == null) {
                 requestLocation();
             }
         });
@@ -152,8 +152,8 @@ public class CompassFragment extends Fragment {
         super.onResume();
         registerSensorListener();
 
-        if (Boolean.TRUE.equals(compassViewModel.getTrueNorth().getValue())
-                && compassViewModel.getLocation().getValue() == null) {
+        if (Boolean.TRUE.equals(compassView.getTrueNorth().getValue())
+                && compassView.getLocation().getValue() == null) {
             requestLocation();
         }
     }
@@ -205,7 +205,7 @@ public class CompassFragment extends Fragment {
                         Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             registerLocationListener();
         } else {
-            compassViewModel.getLocationStatus().setValue(LocationStatus.PERMISSION_DENIED);
+            compassView.getLocationStatus().setValue(LocationStatus.PERMISSION_DENIED);
         }
     }
 
@@ -228,7 +228,7 @@ public class CompassFragment extends Fragment {
     }
 
     private void requestLocationFromProvider(String provider) {
-        compassViewModel.getLocationStatus().setValue(LocationStatus.LOADING);
+        compassView.getLocationStatus().setValue(LocationStatus.LOADING);
 
         if (locationRequestCancellationSignal != null) {
             locationRequestCancellationSignal.cancel();
@@ -244,8 +244,8 @@ public class CompassFragment extends Fragment {
     }
 
     private void setLocation(Location location) {
-        compassViewModel.getLocation().setValue(location);
-        compassViewModel.getLocationStatus()
+        compassView.getLocation().setValue(location);
+        compassView.getLocationStatus()
                 .setValue(location == null ? LocationStatus.NOT_PRESENT : LocationStatus.PRESENT);
     }
 
@@ -296,7 +296,7 @@ public class CompassFragment extends Fragment {
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
             if (sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
-                compassViewModel.getSensorAccuracy().setValue(adaptSensorAccuracy(accuracy));
+                compassView.getSensorAccuracy().setValue(adaptSensorAccuracy(accuracy));
             }
         }
 
@@ -306,8 +306,8 @@ public class CompassFragment extends Fragment {
             Azimuth magneticAzimuth = MathUtils.calculateAzimuth(rotationVector, displayRotation);
 
             float target = magneticAzimuth.getDegrees();
-            if (Boolean.TRUE.equals(compassViewModel.getTrueNorth().getValue())) {
-                Location location = compassViewModel.getLocation().getValue();
+            if (Boolean.TRUE.equals(compassView.getTrueNorth().getValue())) {
+                Location location = compassView.getLocation().getValue();
                 float declination = location != null ? MathUtils.getMagneticDeclination(location) : 0f;
                 target += declination;
             }
@@ -325,7 +325,7 @@ public class CompassFragment extends Fragment {
             while (currentDegree >= 360)
                 currentDegree -= 360;
 
-            compassViewModel.getAzimuth().setValue(new Azimuth(currentDegree));
+            compassView.getAzimuth().setValue(new Azimuth(currentDegree));
         }
 
         private DisplayRotation getDisplayRotation() {

@@ -9,7 +9,7 @@ import io.github.iso53.nothingcompass.model.Azimuth;
 import io.github.iso53.nothingcompass.model.LocationStatus;
 import io.github.iso53.nothingcompass.model.SensorAccuracy;
 
-public class CompassViewModel extends ViewModel {
+public class CompassView extends ViewModel {
     private final MutableLiveData<Azimuth> azimuth = new MutableLiveData<>(new Azimuth(0));
     private final MutableLiveData<SensorAccuracy> sensorAccuracy = new MutableLiveData<>(SensorAccuracy.NO_CONTACT);
     private final MutableLiveData<Boolean> trueNorth = new MutableLiveData<>(false);

@@ -10,7 +10,7 @@
 
         <variable
             name="model"
-            type="io.github.iso53.nothingcompass.view.CompassViewModel" />
+            type="io.github.iso53.nothingcompass.view.CompassView" />
     </data>
 
     <!-- SINGLE ROOT VIEW -->
