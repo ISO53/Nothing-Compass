@@ -25,18 +25,6 @@
             android:layout_height="match_parent"
             android:layout_gravity="center">
 
-            <ImageView
-                android:id="@+id/compass_indicator"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitCenter"
-                android:src="@drawable/compass_indicator"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/rotatingGroup"
                 android:layout_width="match_parent"
@@ -76,7 +64,7 @@
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintCircle="@+id/center_point"
                     app:layout_constraintCircleAngle="0"
-                    app:layout_constraintCircleRadius="@dimen/_135sdp"
+                    app:layout_constraintCircleRadius="@dimen/_145sdp"
                     tools:ignore="MissingConstraints" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -89,7 +77,7 @@
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintCircle="@+id/center_point"
                     app:layout_constraintCircleAngle="30"
-                    app:layout_constraintCircleRadius="@dimen/_135sdp"
+                    app:layout_constraintCircleRadius="@dimen/_145sdp"
                     tools:ignore="MissingConstraints" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -102,7 +90,7 @@
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintCircle="@+id/center_point"
                     app:layout_constraintCircleAngle="60"
-                    app:layout_constraintCircleRadius="@dimen/_135sdp"
+                    app:layout_constraintCircleRadius="@dimen/_145sdp"
                     tools:ignore="MissingConstraints" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -115,7 +103,7 @@
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintCircle="@+id/center_point"
                     app:layout_constraintCircleAngle="90"
-                    app:layout_constraintCircleRadius="@dimen/_135sdp"
+                    app:layout_constraintCircleRadius="@dimen/_145sdp"
                     tools:ignore="MissingConstraints" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -128,7 +116,7 @@
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintCircle="@+id/center_point"
                     app:layout_constraintCircleAngle="120"
-                    app:layout_constraintCircleRadius="@dimen/_135sdp"
+                    app:layout_constraintCircleRadius="@dimen/_145sdp"
                     tools:ignore="MissingConstraints" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -141,7 +129,7 @@
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintCircle="@+id/center_point"
                     app:layout_constraintCircleAngle="150"
-                    app:layout_constraintCircleRadius="@dimen/_135sdp"
+                    app:layout_constraintCircleRadius="@dimen/_145sdp"
                     tools:ignore="MissingConstraints" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -154,7 +142,7 @@
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintCircle="@+id/center_point"
                     app:layout_constraintCircleAngle="180"
-                    app:layout_constraintCircleRadius="@dimen/_135sdp"
+                    app:layout_constraintCircleRadius="@dimen/_145sdp"
                     tools:ignore="MissingConstraints" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -167,7 +155,7 @@
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintCircle="@+id/center_point"
                     app:layout_constraintCircleAngle="210"
-                    app:layout_constraintCircleRadius="@dimen/_135sdp"
+                    app:layout_constraintCircleRadius="@dimen/_145sdp"
                     tools:ignore="MissingConstraints" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -180,7 +168,7 @@
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintCircle="@+id/center_point"
                     app:layout_constraintCircleAngle="240"
-                    app:layout_constraintCircleRadius="@dimen/_135sdp"
+                    app:layout_constraintCircleRadius="@dimen/_145sdp"
                     tools:ignore="MissingConstraints" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -193,7 +181,7 @@
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintCircle="@+id/center_point"
                     app:layout_constraintCircleAngle="270"
-                    app:layout_constraintCircleRadius="@dimen/_135sdp"
+                    app:layout_constraintCircleRadius="@dimen/_145sdp"
                     tools:ignore="MissingConstraints" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -206,7 +194,7 @@
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintCircle="@+id/center_point"
                     app:layout_constraintCircleAngle="300"
-                    app:layout_constraintCircleRadius="@dimen/_135sdp"
+                    app:layout_constraintCircleRadius="@dimen/_145sdp"
                     tools:ignore="MissingConstraints" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -219,7 +207,7 @@
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintCircle="@+id/center_point"
                     app:layout_constraintCircleAngle="330"
-                    app:layout_constraintCircleRadius="@dimen/_135sdp"
+                    app:layout_constraintCircleRadius="@dimen/_145sdp"
                     tools:ignore="MissingConstraints" />
 
                 <!-- Direction Labels -->
@@ -234,7 +222,7 @@
                     android:textStyle="bold"
                     app:layout_constraintCircle="@+id/center_point"
                     app:layout_constraintCircleAngle="0"
-                    app:layout_constraintCircleRadius="@dimen/_100sdp"
+                    app:layout_constraintCircleRadius="@dimen/_90sdp"
                     tools:ignore="MissingConstraints" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -248,7 +236,7 @@
                     android:textStyle="bold"
                     app:layout_constraintCircle="@+id/center_point"
                     app:layout_constraintCircleAngle="90"
-                    app:layout_constraintCircleRadius="@dimen/_100sdp"
+                    app:layout_constraintCircleRadius="@dimen/_90sdp"
                     tools:ignore="MissingConstraints" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -262,7 +250,7 @@
                     android:textStyle="bold"
                     app:layout_constraintCircle="@+id/center_point"
                     app:layout_constraintCircleAngle="180"
-                    app:layout_constraintCircleRadius="@dimen/_100sdp"
+                    app:layout_constraintCircleRadius="@dimen/_90sdp"
                     tools:ignore="MissingConstraints" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -276,7 +264,7 @@
                     android:textStyle="bold"
                     app:layout_constraintCircle="@+id/center_point"
                     app:layout_constraintCircleAngle="270"
-                    app:layout_constraintCircleRadius="@dimen/_100sdp"
+                    app:layout_constraintCircleRadius="@dimen/_90sdp"
                     tools:ignore="MissingConstraints" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -289,6 +277,18 @@
                 android:src="@drawable/device_heading_indicator" />
 
         </FrameLayout>
+
+        <ImageView
+            android:id="@+id/compass_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/compass_indicator"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- TOP INFO -->
         <LinearLayout
