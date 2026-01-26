@@ -63,7 +63,6 @@ public class InclinometerView extends View {
         canvas.drawLine(cx, cy - half, cx, cy + half, paint);
         canvas.drawLine(cx - half, cy, cx + half, cy, paint);
 
-
         // paint the moving circle
         paint.setStyle(Paint.Style.FILL);
         canvas.drawCircle(bubbleX, bubbleY, bubbleRadius, paint);
