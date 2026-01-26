@@ -17,7 +17,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import java.util.Objects;
 
 import io.github.iso53.nothingcompass.fragment.CompassFragment;
-import io.github.iso53.nothingcompass.fragment.SpiritLevelFragment;
+import io.github.iso53.nothingcompass.fragment.InclinometerFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     case 0:
                         return new CompassFragment();
                     case 1:
-                        return new SpiritLevelFragment();
+                        return new InclinometerFragment();
                     default:
                         throw new IllegalStateException("Invalid position.");
                 }
