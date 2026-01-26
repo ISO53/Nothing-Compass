@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- On Android 12+ in night mode, this theme will be used.
          It inherits from the base and pulls colors from this values-night-v31 directory. -->
     <style name="Theme.NothingCompass" parent="Base.Theme.NothingCompass">
