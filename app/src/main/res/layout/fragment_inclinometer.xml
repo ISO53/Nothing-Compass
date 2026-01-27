@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".fragment.InclinometerFragment">
 
-    <!-- Bubble drawing surface -->
+    <!-- Inclinometer drawing surface -->
     <io.github.iso53.nothingcompass.view.InclinometerView
         android:id="@+id/inclinometerView"
         android:layout_width="0dp"
