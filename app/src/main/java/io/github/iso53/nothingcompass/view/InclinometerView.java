@@ -11,8 +11,8 @@ import com.google.android.material.color.MaterialColors;
 
 public class InclinometerView extends View {
 
-    private int colorPrimary;
-    private int colorSecondary;
+    private final int colorPrimary;
+    private final int colorSecondary;
     private final Paint paint;
 
     private float cx, cy;
@@ -27,15 +27,15 @@ public class InclinometerView extends View {
 
     public InclinometerView(Context c, AttributeSet a) {
         super(c, a);
+        colorPrimary = MaterialColors.getColor(this, androidx.appcompat.R.attr.colorPrimary);
+        colorSecondary = MaterialColors.getColor(this, R.attr.colorSecondary);
+        
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setDither(true);
         paint.setColor(colorSecondary);
         paint.setStrokeCap(Paint.Cap.ROUND);
         paint.setStrokeJoin(Paint.Join.ROUND);
         paint.setStrokeWidth(dp(1.5f));
-
-        colorPrimary = MaterialColors.getColor(this, androidx.appcompat.R.attr.colorPrimary);
-        colorSecondary = MaterialColors.getColor(this, R.attr.colorSecondary);
     }
 
     @Override
