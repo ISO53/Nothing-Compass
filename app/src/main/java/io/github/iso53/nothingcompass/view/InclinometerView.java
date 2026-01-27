@@ -22,7 +22,7 @@ public class InclinometerView extends View {
     private float bubbleRadius;
     private boolean inCenter;
 
-    private static final float SMOOTH = 0.50f;
+    private static final float SMOOTH = 0.75f;
     private static final float CENTER_THRESHOLD = 0.01f; // 1% of ring
 
     public InclinometerView(Context c, AttributeSet a) {
