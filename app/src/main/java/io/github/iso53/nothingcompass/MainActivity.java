@@ -14,6 +14,9 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+
 import java.util.Objects;
 
 import io.github.iso53.nothingcompass.fragment.CompassFragment;
@@ -57,6 +60,11 @@ public class MainActivity extends AppCompatActivity {
                 return 2;
             }
         });
+
+        TabLayout tabLayout = findViewById(R.id.mainTabLayout);
+        new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> {
+            // No text needed for dot indicator
+        }).attach();
     }
 
     @Override

@@ -36,6 +36,35 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mainToolbar" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/pagerIndicatorGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.825" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/mainTabLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="12dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pagerIndicatorGuideline"
+            app:tabBackground="@drawable/tab_dot_selector"
+            app:tabIndicator="@drawable/dot_selected"
+            app:tabIndicatorAnimationMode="elastic"
+            app:tabIndicatorColor="@null"
+            app:tabIndicatorGravity="center"
+            app:tabIndicatorHeight="8dp"
+            app:tabIndicatorFullWidth="false"
+            app:tabMaxWidth="12dp"
+            app:tabMinWidth="12dp"
+            app:tabPaddingStart="0dp"
+            app:tabPaddingEnd="0dp"
+            app:tabRippleColor="@null" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
