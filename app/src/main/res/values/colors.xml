@@ -16,4 +16,5 @@
     <color name="selectableItemBackground">#FFFFFF</color>
     <color name="textColorPrimary">#1A1A1A</color>
     <color name="textColorSecondary">#909090</color>
+    <color name="colorSurfaceVariant">#FFFFFF</color>
 </resources>
