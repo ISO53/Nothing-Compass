@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.fragment)
     implementation(libs.viewpager2)
     implementation(libs.androidx.preference)
+    implementation(libs.play.review)
     implementation(libs.sdp.android)
     implementation(libs.ssp.android)
     testImplementation(libs.junit)

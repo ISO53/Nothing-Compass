@@ -1,5 +1,6 @@
 package io.github.iso53.nothingcompass;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,16 +12,22 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.google.android.play.core.review.ReviewInfo;
+import com.google.android.play.core.review.ReviewManager;
+import com.google.android.play.core.review.ReviewManagerFactory;
 
 import java.util.Objects;
 
 import io.github.iso53.nothingcompass.fragment.CompassFragment;
 import io.github.iso53.nothingcompass.fragment.InclinometerFragment;
+import io.github.iso53.nothingcompass.preference.PreferenceConstants;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -65,6 +72,37 @@ public class MainActivity extends AppCompatActivity {
         new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> {
             // No text needed for dot indicator
         }).attach();
+
+        checkAndRequestReview();
+    }
+
+    private void checkAndRequestReview() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean hasAsked = prefs.getBoolean(PreferenceConstants.HAS_ASKED_FOR_REVIEW, false);
+        if (hasAsked) return;
+
+        int launchCount = prefs.getInt(PreferenceConstants.APP_LAUNCH_COUNT, 0) + 1;
+        prefs.edit().putInt(PreferenceConstants.APP_LAUNCH_COUNT, launchCount).apply();
+
+        // Let's ask after 5 launches
+        if (launchCount >= 5) {
+            requestInAppReview(prefs);
+        }
+    }
+
+    private void requestInAppReview(SharedPreferences prefs) {
+        ReviewManager manager = ReviewManagerFactory.create(this);
+        Task<ReviewInfo> request = manager.requestReviewFlow();
+        request.addOnCompleteListener(task -> {
+            if (!task.isSuccessful()) {
+                return;
+            }
+
+            ReviewInfo reviewInfo = task.getResult();
+            Task<Void> flow = manager.launchReviewFlow(this, reviewInfo);
+            flow.addOnCompleteListener(reviewFlowTask -> prefs.edit()
+                    .putBoolean(PreferenceConstants.HAS_ASKED_FOR_REVIEW, true).apply());
+        });
     }
 
     @Override

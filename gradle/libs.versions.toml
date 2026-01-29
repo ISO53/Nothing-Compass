@@ -12,6 +12,7 @@ sdpAndroid = "1.1.1"
 sspAndroid = "1.1.1"
 viewpager2 = "1.0.0"
 preference = "1.2.1"
+review = "2.0.2"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -26,6 +27,7 @@ sdp-android = { module = "com.intuit.sdp:sdp-android", version.ref = "sdpAndroid
 ssp-android = { module = "com.intuit.ssp:ssp-android", version.ref = "sspAndroid" }
 viewpager2 = { group = "androidx.viewpager2", name = "viewpager2", version.ref = "viewpager2" }
 androidx-preference = { group = "androidx.preference", name = "preference", version.ref = "preference" }
+play-review = { group = "com.google.android.play", name = "review", version.ref = "review" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
