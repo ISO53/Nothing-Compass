@@ -7,6 +7,8 @@
     <color name="colorOnPrimaryContainer">#FFFFFF</color>
     <color name="colorSecondary">#888888</color>
     <color name="colorOnSecondary">#FFFFFF</color>
+    <color name="colorTertiary">#5A5A5A</color>
+    <color name="colorOnTertiary">#FFFFFF</color>
     <color name="colorBackground">#000000</color>
     <color name="colorOnBackground">#FFFFFF</color>
     <color name="colorSurface">#000000</color>
