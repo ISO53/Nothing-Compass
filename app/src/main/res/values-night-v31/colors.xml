@@ -13,4 +13,7 @@
     <color name="colorOnBackground">#FFFFFF</color>
     <color name="colorSurface">#000000</color>
     <color name="colorOnSurface">#FFFFFF</color>
+    <color name="selectableItemBackground">#2F2F2F</color>
+    <color name="textColorPrimary">#F1F1F1</color>
+    <color name="textColorSecondary">#6B6B6B</color>
 </resources>

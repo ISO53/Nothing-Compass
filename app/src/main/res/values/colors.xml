@@ -9,8 +9,11 @@
     <color name="colorOnSecondary">#FFFFFF</color>
     <color name="colorTertiary">#B5B5B5</color>
     <color name="colorOnTertiary">#000000</color>
-    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorBackground">#F2F2F2</color>
     <color name="colorOnBackground">#000000</color>
     <color name="colorSurface">#FFFFFF</color>
     <color name="colorOnSurface">#000000</color>
+    <color name="selectableItemBackground">#FFFFFF</color>
+    <color name="textColorPrimary">#1A1A1A</color>
+    <color name="textColorSecondary">#909090</color>
 </resources>

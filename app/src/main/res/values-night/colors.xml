@@ -13,4 +13,6 @@
     <color name="colorOnBackground">#FFFFFF</color>
     <color name="colorSurface">#2A2A2C</color>
     <color name="colorOnSurface">#FFFFFF</color>
+    <color name="textColorPrimary">#F1F1F1</color>
+    <color name="textColorSecondary">#6B6B6B</color>
 </resources>

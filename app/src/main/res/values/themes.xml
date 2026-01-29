@@ -19,6 +19,10 @@
         <item name="colorSurface">@color/colorSurface</item>
         <item name="colorOnBackground">@color/colorOnBackground</item>
         <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="selectableItemBackground">@color/selectableItemBackground</item>
+        <!-- Text Colors -->
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
     </style>
 
     <style name="Theme.NothingCompass" parent="Base.Theme.NothingCompass" />
