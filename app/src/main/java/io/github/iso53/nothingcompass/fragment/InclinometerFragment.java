@@ -14,12 +14,14 @@ import androidx.fragment.app.Fragment;
 
 import io.github.iso53.nothingcompass.R;
 import io.github.iso53.nothingcompass.view.InclinometerView;
+import io.github.iso53.nothingcompass.view.LevelMeterView;
 
 public class InclinometerFragment extends Fragment implements SensorEventListener {
 
     private SensorManager sensorManager;
     private Sensor gravitySensor;
     private InclinometerView inclinometerView;
+    private LevelMeterView levelMeterView;
     private float radius;
 
     public InclinometerFragment() {
@@ -29,6 +31,7 @@ public class InclinometerFragment extends Fragment implements SensorEventListene
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_inclinometer, container, false);
         inclinometerView = v.findViewById(R.id.inclinometerView);
+        levelMeterView = v.findViewById(R.id.levelMeterView);
         sensorManager = (SensorManager) requireContext().getSystemService(Context.SENSOR_SERVICE);
         gravitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY);
         return v;
@@ -68,5 +71,6 @@ public class InclinometerFragment extends Fragment implements SensorEventListene
         float pitch = gy;   // forward/back tilt
 
         inclinometerView.updateTilt(pitch, roll);
+        levelMeterView.updateTilt(gx, gy);
     }
 }
