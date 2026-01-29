@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Dark Theme Colors (Standard Material Dark) -->
+    <!-- True Dark (Pitch Black) Theme Colors -->
     <color name="colorPrimary">#D71921</color>
     <color name="colorOnPrimary">#000000</color>
     <color name="colorPrimaryContainer">#8A1A1F</color>
     <color name="colorOnPrimaryContainer">#FFFFFF</color>
-    <color name="colorSecondary">#A3A3A3</color>
-    <color name="colorOnSecondary">#000000</color>
-    <color name="colorTertiary">#6B6B6B</color>
+    <color name="colorSecondary">#888888</color>
+    <color name="colorOnSecondary">#FFFFFF</color>
+    <color name="colorTertiary">#5A5A5A</color>
     <color name="colorOnTertiary">#FFFFFF</color>
-    <color name="colorBackground">#1B1B1D</color>
+    <color name="colorBackground">#000000</color>
     <color name="colorOnBackground">#FFFFFF</color>
-    <color name="colorSurface">#2A2A2C</color>
+    <color name="colorSurface">#000000</color>
     <color name="colorOnSurface">#FFFFFF</color>
-    <color name="selectableItemBackground">#2F2F2F</color>
+    <color name="selectableItemBackground">#1A1A1A</color>
     <color name="textColorPrimary">#F1F1F1</color>
     <color name="textColorSecondary">#6B6B6B</color>
-    <color name="colorSurfaceVariant">#2F2F2F</color>
+    <color name="colorSurfaceVariant">#1A1A1A</color>
 </resources>

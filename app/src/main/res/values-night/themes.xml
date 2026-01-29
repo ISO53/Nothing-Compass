@@ -1,5 +1,9 @@
 <resources>
     <!-- The dark theme inherits from the base theme.
          The system automatically uses colors from the values-night directory. -->
-    <style name="Theme.NothingCompass" parent="Base.Theme.NothingCompass" />
+    <style name="Theme.NothingCompass" parent="Base.Theme.NothingCompass">
+        <!-- Optional: Override system UI controller for better contrast on pitch black -->
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+    </style>
 </resources>
