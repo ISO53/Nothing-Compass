@@ -12,6 +12,8 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CancellationSignal;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Surface;
@@ -57,7 +59,7 @@ public class CompassFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-            @Nullable Bundle savedInstanceState) {
+                             @Nullable Bundle savedInstanceState) {
         binding = FragmentCompassBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -284,7 +286,11 @@ public class CompassFragment extends Fragment {
 
     private class CompassSensorEventListener implements SensorEventListener {
 
+        private static final float COMPASS_VIBRATION_DEGREE_INTERVAL = 2f; // Vibrate every N degrees
+        private static final int VIBRATION_DURATION_MS = 10; // Short vibration
+
         private float currentDegree = 0f;
+        private int lastVibrationDegree = 0;
 
         @Override
         public void onSensorChanged(SensorEvent event) {
@@ -325,7 +331,26 @@ public class CompassFragment extends Fragment {
             while (currentDegree >= 360)
                 currentDegree -= 360;
 
+            // Haptic feedback on degree intervals
+            if (Boolean.TRUE.equals(compassView.getHapticFeedback().getValue())) {
+                int currentDegreeInt = Math.round(currentDegree / COMPASS_VIBRATION_DEGREE_INTERVAL);
+                if (currentDegreeInt != lastVibrationDegree) {
+                    lastVibrationDegree = currentDegreeInt;
+                    performHapticFeedback();
+                }
+            }
+
             compassView.getAzimuth().setValue(new Azimuth(currentDegree));
+        }
+
+        private void performHapticFeedback() {
+            Vibrator vibrator = (Vibrator) requireContext().getSystemService(Context.VIBRATOR_SERVICE);
+            if (vibrator != null && vibrator.hasVibrator()) {
+                vibrator.vibrate(VibrationEffect.createOneShot(
+                        VIBRATION_DURATION_MS,
+                        VibrationEffect.DEFAULT_AMPLITUDE)
+                );
+            }
         }
 
         private DisplayRotation getDisplayRotation() {

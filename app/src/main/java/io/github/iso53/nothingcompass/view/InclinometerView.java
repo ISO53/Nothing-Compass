@@ -3,6 +3,9 @@ package io.github.iso53.nothingcompass.view;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.os.Build;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -24,12 +27,15 @@ public class InclinometerView extends View {
 
     private static final float SMOOTH = 0.75f;
     private static final float CENTER_THRESHOLD = 0.01f; // 1% of ring
+    private static final int VIBRATION_DURATION_MS = 15; // Slightly longer for center hit
+    private boolean wasInCenter = false;
+    private boolean isActive = true; // Default to true as it's the initial view
 
     public InclinometerView(Context c, AttributeSet a) {
         super(c, a);
         colorPrimary = MaterialColors.getColor(this, androidx.appcompat.R.attr.colorPrimary);
         colorSecondary = MaterialColors.getColor(this, R.attr.colorSecondary);
-        
+
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setDither(true);
         paint.setColor(colorSecondary);
@@ -88,7 +94,26 @@ public class InclinometerView extends View {
 
         inCenter = distFromCenter < ringRadius * CENTER_THRESHOLD;
 
+        if (isActive && inCenter && !wasInCenter) {
+            performHapticFeedback();
+        }
+        wasInCenter = inCenter;
+
         invalidate();
+    }
+
+    public void setIsActive(boolean active) {
+        this.isActive = active;
+    }
+
+    private void performHapticFeedback() {
+        Vibrator vibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+        if (vibrator != null && vibrator.hasVibrator()) {
+            vibrator.vibrate(VibrationEffect.createOneShot(
+                    VIBRATION_DURATION_MS,
+                    VibrationEffect.DEFAULT_AMPLITUDE
+            ));
+        }
     }
 
     private float dp(float v) {

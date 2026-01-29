@@ -5,6 +5,9 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.os.Build;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.widget.FrameLayout;
@@ -22,6 +25,8 @@ public class LevelMeterView extends FrameLayout {
     private static final float LINE_LENGTH_RATIO = 0.75f;
     private static final float STROKE_WIDTH_DP = 1.5f;
     private static final int DEGREE_TEXT_SIZE_SP = 48;
+    private static final float VIBRATION_DEGREE_INTERVAL = 1f; // Vibrate every N degrees
+    private static final int VIBRATION_DURATION_MS = 10; // Short vibration
 
     // Colors
     private final int colorPrimary;
@@ -40,6 +45,8 @@ public class LevelMeterView extends FrameLayout {
     private boolean isHorizontal;
     private float cx, cy;
     private float ringRadius;
+    private int lastVibrationDegree = 0;
+    private boolean isActive = false;
 
     public LevelMeterView(Context c, AttributeSet a) {
         super(c, a);
@@ -187,7 +194,32 @@ public class LevelMeterView extends FrameLayout {
         calculateSpinAngle(gx, gy);
         updateOrientation();
         updateDegreeDisplay();
+        handleHapticFeedback();
         invalidate();
+    }
+
+    private void handleHapticFeedback() {
+        if (!isActive)
+            return;
+        int currentDegreeInt = Math.round(spin / VIBRATION_DEGREE_INTERVAL);
+        if (currentDegreeInt != lastVibrationDegree) {
+            lastVibrationDegree = currentDegreeInt;
+            performHapticFeedback();
+        }
+    }
+
+    public void setIsActive(boolean active) {
+        this.isActive = active;
+    }
+
+    private void performHapticFeedback() {
+        Vibrator vibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+        if (vibrator != null && vibrator.hasVibrator()) {
+            vibrator.vibrate(VibrationEffect.createOneShot(
+                    VIBRATION_DURATION_MS,
+                    VibrationEffect.DEFAULT_AMPLITUDE
+            ));
+        }
     }
 
     private void calculateSpinAngle(float gx, float gy) {

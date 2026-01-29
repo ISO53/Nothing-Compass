@@ -41,7 +41,9 @@ public class InclinometerFragment extends Fragment implements SensorEventListene
 
         // Initially show inclinometer, hide level meter
         inclinometerView.setAlpha(1f);
+        inclinometerView.setIsActive(true);
         levelMeterView.setAlpha(0f);
+        levelMeterView.setIsActive(false);
 
         return v;
     }
@@ -102,21 +104,25 @@ public class InclinometerFragment extends Fragment implements SensorEventListene
                     .setDuration(ANIMATION_DURATION)
                     .start();
 
+            inclinometerView.setIsActive(true);
             levelMeterView.animate()
                     .alpha(0f)
                     .setDuration(ANIMATION_DURATION)
                     .start();
+            levelMeterView.setIsActive(false);
         } else {
             // Fade out inclinometer, fade in level meter
             inclinometerView.animate()
                     .alpha(0f)
                     .setDuration(ANIMATION_DURATION)
                     .start();
+            inclinometerView.setIsActive(false);
 
             levelMeterView.animate()
                     .alpha(1f)
                     .setDuration(ANIMATION_DURATION)
                     .start();
+            levelMeterView.setIsActive(true);
         }
     }
 }
