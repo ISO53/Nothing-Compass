@@ -62,15 +62,15 @@ Nothing Compass is designed to be a simple, distraction-free tool for navigation
 
 ## In App Images
 
-<!-- Add your screenshots here. You can upload them to your repo or use an external host. -->
-<!-- Example: <img src="screenshots/compass.png" width="300" /> -->
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/8379b922-092a-4400-9845-3e64d25e97b1" width="250"/></td>
+    <td><img src="https://github.com/user-attachments/assets/e3bc6b2b-3dbd-4d38-afc8-c59138c1b0b7" width="250"/></td>
+    <td><img src="https://github.com/user-attachments/assets/f269b5aa-8e46-4d7f-b897-c329fdba1b22" width="250"/></td>
+    <td><img src="https://github.com/user-attachments/assets/40abb9ba-18f7-4931-8fc5-97051024a22f" width="250"/></td>
+  </tr>
+</table>
 
-<div align="center">
-    <!-- Replace src with your actual image paths -->
-    <img src="path/to/compass_screenshot.png" alt="Compass View" width="270" />
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <img src="path/to/inclinometer_screenshot.png" alt="Inclinometer View" width="270" />
-</div>
 
 ## Getting Started
 
