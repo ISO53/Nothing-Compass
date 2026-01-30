@@ -17,4 +17,5 @@
     <color name="textColorPrimary">#F1F1F1</color>
     <color name="textColorSecondary">#6B6B6B</color>
     <color name="colorSurfaceVariant">#1A1A1A</color>
+    <color name="colorSurfaceContainerHigh">#1A1A1A</color>
 </resources>

@@ -8,4 +8,5 @@ public final class PreferenceConstants {
     public static final String HAPTIC_FEEDBACK = "haptic_feedback";
     public static final String APP_LAUNCH_COUNT = "app_launch_count";
     public static final String HAS_ASKED_FOR_REVIEW = "has_asked_for_review";
+    public static final String THEME = "theme";
 }

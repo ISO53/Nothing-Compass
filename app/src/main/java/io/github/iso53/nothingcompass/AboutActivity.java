@@ -8,11 +8,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.preference.PreferenceManager;
+import android.content.SharedPreferences;
+import io.github.iso53.nothingcompass.preference.PreferenceConstants;
 
 public class AboutActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Apply theme before super.onCreate
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        int themeMode = prefs.getInt(PreferenceConstants.THEME, AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        AppCompatDelegate.setDefaultNightMode(themeMode);
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_about);

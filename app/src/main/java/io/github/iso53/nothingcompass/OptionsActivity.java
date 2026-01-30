@@ -2,22 +2,28 @@ package io.github.iso53.nothingcompass;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.github.iso53.nothingcompass.model.OptionItem;
+import io.github.iso53.nothingcompass.preference.PreferenceConstants;
 import io.github.iso53.nothingcompass.view.OptionsAdapter;
 
 public class OptionsActivity extends AppCompatActivity {
@@ -28,6 +34,12 @@ public class OptionsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Apply theme before super.onCreate
+        SharedPreferences themePrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        int themeMode = themePrefs.getInt(PreferenceConstants.THEME,
+                AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        AppCompatDelegate.setDefaultNightMode(themeMode);
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_options);
@@ -62,12 +74,13 @@ public class OptionsActivity extends AppCompatActivity {
 
         List<OptionItem> items = new ArrayList<>();
 
+        // Category: Preferences
+        items.add(new OptionItem(getString(R.string.category_preferences)));
+        items.add(new OptionItem(getString(R.string.item_theme), null, R.drawable.ic_settings,
+                v -> showThemeSelectionDialog()));
+
         // Category: App
         items.add(new OptionItem(getString(R.string.category_app)));
-        items.add(new OptionItem(getString(R.string.item_settings), null, R.drawable.ic_settings,
-                v -> {
-                    // TODO: Navigate to settings
-                }));
         items.add(new OptionItem(getString(R.string.item_version_update), null,
                 R.drawable.ic_version_update, v -> openPlayStore()));
         items.add(new OptionItem(getString(R.string.item_about), null, R.drawable.ic_about,
@@ -92,6 +105,45 @@ public class OptionsActivity extends AppCompatActivity {
 
         OptionsAdapter adapter = new OptionsAdapter(items);
         recyclerView.setAdapter(adapter);
+    }
+
+    private void showThemeSelectionDialog() {
+        String[] themes = {
+                getString(R.string.theme_light),
+                getString(R.string.theme_dark),
+                getString(R.string.theme_system)
+        };
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        int currentTheme = prefs.getInt(PreferenceConstants.THEME,
+                AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+
+        int checkedItem = 2; // Default to System
+        if (currentTheme == AppCompatDelegate.MODE_NIGHT_NO)
+            checkedItem = 0;
+        else if (currentTheme == AppCompatDelegate.MODE_NIGHT_YES)
+            checkedItem = 1;
+
+        new MaterialAlertDialogBuilder(this)
+                .setTitle(R.string.item_theme)
+                .setSingleChoiceItems(themes, checkedItem, (dialog, which) -> {
+                    int mode;
+                    switch (which) {
+                        case 0:
+                            mode = AppCompatDelegate.MODE_NIGHT_NO;
+                            break;
+                        case 1:
+                            mode = AppCompatDelegate.MODE_NIGHT_YES;
+                            break;
+                        default:
+                            mode = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
+                            break;
+                    }
+                    prefs.edit().putInt(PreferenceConstants.THEME, mode).apply();
+                    AppCompatDelegate.setDefaultNightMode(mode);
+                    dialog.dismiss();
+                })
+                .show();
     }
 
     private void openPlayStore() {

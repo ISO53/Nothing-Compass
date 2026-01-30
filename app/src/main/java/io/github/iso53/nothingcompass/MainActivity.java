@@ -12,6 +12,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.PreferenceManager;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
@@ -33,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Apply theme before super.onCreate
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        int themeMode = prefs.getInt(PreferenceConstants.THEME, AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        AppCompatDelegate.setDefaultNightMode(themeMode);
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
@@ -79,7 +85,8 @@ public class MainActivity extends AppCompatActivity {
     private void checkAndRequestReview() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         boolean hasAsked = prefs.getBoolean(PreferenceConstants.HAS_ASKED_FOR_REVIEW, false);
-        if (hasAsked) return;
+        if (hasAsked)
+            return;
 
         int launchCount = prefs.getInt(PreferenceConstants.APP_LAUNCH_COUNT, 0) + 1;
         prefs.edit().putInt(PreferenceConstants.APP_LAUNCH_COUNT, launchCount).apply();
