@@ -47,6 +47,7 @@ public class LevelMeterView extends FrameLayout {
     private float ringRadius;
     private int lastVibrationDegree = 0;
     private boolean isActive = false;
+    private boolean isHapticFeedbackEnabled = true;
 
     public LevelMeterView(Context c, AttributeSet a) {
         super(c, a);
@@ -199,7 +200,7 @@ public class LevelMeterView extends FrameLayout {
     }
 
     private void handleHapticFeedback() {
-        if (!isActive)
+        if (!isActive || !isHapticFeedbackEnabled)
             return;
         int currentDegreeInt = Math.round(spin / VIBRATION_DEGREE_INTERVAL);
         if (currentDegreeInt != lastVibrationDegree) {
@@ -212,13 +213,16 @@ public class LevelMeterView extends FrameLayout {
         this.isActive = active;
     }
 
+    public void setHapticFeedbackEnabled(boolean enabled) {
+        this.isHapticFeedbackEnabled = enabled;
+    }
+
     private void performHapticFeedback() {
         Vibrator vibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
         if (vibrator != null && vibrator.hasVibrator()) {
             vibrator.vibrate(VibrationEffect.createOneShot(
                     VIBRATION_DURATION_MS,
-                    VibrationEffect.DEFAULT_AMPLITUDE
-            ));
+                    VibrationEffect.DEFAULT_AMPLITUDE));
         }
     }
 

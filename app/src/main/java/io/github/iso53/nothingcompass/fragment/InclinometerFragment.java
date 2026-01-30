@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 import io.github.iso53.nothingcompass.R;
+import io.github.iso53.nothingcompass.preference.PreferenceStore;
 import io.github.iso53.nothingcompass.view.InclinometerView;
 import io.github.iso53.nothingcompass.view.LevelMeterView;
 
@@ -25,6 +26,7 @@ public class InclinometerFragment extends Fragment implements SensorEventListene
     private Sensor gravitySensor;
     private InclinometerView inclinometerView;
     private LevelMeterView levelMeterView;
+    private PreferenceStore preferenceStore;
 
     private boolean isInclinometerVisible = true;
 
@@ -38,6 +40,12 @@ public class InclinometerFragment extends Fragment implements SensorEventListene
         levelMeterView = v.findViewById(R.id.levelMeterView);
         sensorManager = (SensorManager) requireContext().getSystemService(Context.SENSOR_SERVICE);
         gravitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY);
+
+        preferenceStore = new PreferenceStore(requireContext(), getViewLifecycleOwner().getLifecycle());
+        preferenceStore.getHapticFeedback().observe(getViewLifecycleOwner(), enabled -> {
+            inclinometerView.setHapticFeedbackEnabled(enabled);
+            levelMeterView.setHapticFeedbackEnabled(enabled);
+        });
 
         // Initially show inclinometer, hide level meter
         inclinometerView.setAlpha(1f);

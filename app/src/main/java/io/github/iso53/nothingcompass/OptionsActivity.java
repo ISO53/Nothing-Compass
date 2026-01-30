@@ -53,7 +53,7 @@ public class OptionsActivity extends AppCompatActivity {
 
         // Handle bottom padding for RecyclerView to avoid navigation bar overlap
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.optionsRecyclerView), (v,
-                                                                                           insets) -> {
+                insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(v.getPaddingLeft(), v.getPaddingTop(), v.getPaddingRight(),
                     systemBars.bottom + v.getPaddingBottom());
@@ -78,6 +78,8 @@ public class OptionsActivity extends AppCompatActivity {
         items.add(new OptionItem(getString(R.string.category_preferences)));
         items.add(new OptionItem(getString(R.string.item_theme), null, R.drawable.ic_settings,
                 v -> showThemeSelectionDialog()));
+        items.add(new OptionItem(getString(R.string.item_haptic_feedback), null, R.drawable.ic_vibration,
+                v -> showHapticFeedbackSelectionDialog()));
 
         // Category: App
         items.add(new OptionItem(getString(R.string.category_app)));
@@ -146,6 +148,27 @@ public class OptionsActivity extends AppCompatActivity {
                 .show();
     }
 
+    private void showHapticFeedbackSelectionDialog() {
+        String[] options = {
+                getString(R.string.haptic_feedback_on),
+                getString(R.string.haptic_feedback_off)
+        };
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean currentHaptic = prefs.getBoolean(PreferenceConstants.HAPTIC_FEEDBACK, true);
+
+        int checkedItem = currentHaptic ? 0 : 1;
+
+        new MaterialAlertDialogBuilder(this)
+                .setTitle(R.string.item_haptic_feedback)
+                .setSingleChoiceItems(options, checkedItem, (dialog, which) -> {
+                    boolean enabled = (which == 0);
+                    prefs.edit().putBoolean(PreferenceConstants.HAPTIC_FEEDBACK, enabled).apply();
+                    dialog.dismiss();
+                })
+                .show();
+    }
+
     private void openPlayStore() {
         String packageName = getPackageName();
         try {
@@ -187,7 +210,7 @@ public class OptionsActivity extends AppCompatActivity {
 
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:"));
-        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{feedbackEmail});
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[] { feedbackEmail });
         intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback/Support - Nothing Compass");
         intent.putExtra(Intent.EXTRA_TEXT, deviceInfo);
 

@@ -30,6 +30,7 @@ public class InclinometerView extends View {
     private static final int VIBRATION_DURATION_MS = 15; // Slightly longer for center hit
     private boolean wasInCenter = false;
     private boolean isActive = true; // Default to true as it's the initial view
+    private boolean isHapticFeedbackEnabled = true;
 
     public InclinometerView(Context c, AttributeSet a) {
         super(c, a);
@@ -94,7 +95,7 @@ public class InclinometerView extends View {
 
         inCenter = distFromCenter < ringRadius * CENTER_THRESHOLD;
 
-        if (isActive && inCenter && !wasInCenter) {
+        if (isActive && inCenter && !wasInCenter && isHapticFeedbackEnabled) {
             performHapticFeedback();
         }
         wasInCenter = inCenter;
@@ -106,13 +107,16 @@ public class InclinometerView extends View {
         this.isActive = active;
     }
 
+    public void setHapticFeedbackEnabled(boolean enabled) {
+        this.isHapticFeedbackEnabled = enabled;
+    }
+
     private void performHapticFeedback() {
         Vibrator vibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
         if (vibrator != null && vibrator.hasVibrator()) {
             vibrator.vibrate(VibrationEffect.createOneShot(
                     VIBRATION_DURATION_MS,
-                    VibrationEffect.DEFAULT_AMPLITUDE
-            ));
+                    VibrationEffect.DEFAULT_AMPLITUDE));
         }
     }
 

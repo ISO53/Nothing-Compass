@@ -62,5 +62,8 @@
     <string name="about_version">Version %1$s</string>
     <string name="about_developed_by">Developed with passion by iso53</string>
     <string name="about_legal_disclaimer">This application is provided "as is" without warranty of any kind. The developer is not responsible for any inaccuracies or issues arising from its use.</string>
+    <string name="item_haptic_feedback">Haptic feedback</string>
+    <string name="haptic_feedback_on">On</string>
+    <string name="haptic_feedback_off">Off</string>
     <string name="options">Options</string>
 </resources>
