@@ -17,6 +17,7 @@ import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.oss.licenses.OssLicensesMenuActivity;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.ArrayList;
@@ -27,10 +28,6 @@ import io.github.iso53.nothingcompass.preference.PreferenceConstants;
 import io.github.iso53.nothingcompass.view.OptionsAdapter;
 
 public class OptionsActivity extends AppCompatActivity {
-
-    private static void onClick(View v) {
-        // TODO: Show OSS licenses
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,8 +93,8 @@ public class OptionsActivity extends AppCompatActivity {
         items.add(new OptionItem(getString(R.string.category_support)));
         items.add(new OptionItem(getString(R.string.item_license), null, R.drawable.ic_license,
                 v -> openUrl("https://github.com/iso53/Nothing-Compass/blob/main/LICENSE.md")));
-        items.add(new OptionItem(getString(R.string.item_third_party_licenses), null,
-                R.drawable.ic_verified, OptionsActivity::onClick));
+        items.add(new OptionItem(getString(R.string.item_third_party_licenses), null, R.drawable.ic_verified,
+                v -> startActivity(new Intent(this, OssLicensesMenuActivity.class))));
         items.add(new OptionItem(getString(R.string.item_manage_permission), null,
                 R.drawable.ic_permission, v -> openAppSettings()));
         items.add(new OptionItem(getString(R.string.item_help_feedback), null, R.drawable.ic_help,
