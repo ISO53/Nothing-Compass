@@ -92,7 +92,7 @@ public class OptionsActivity extends AppCompatActivity {
         // Category: Support
         items.add(new OptionItem(getString(R.string.category_support)));
         items.add(new OptionItem(getString(R.string.item_license), null, R.drawable.ic_license,
-                v -> openUrl("https://github.com/iso53/Nothing-Compass/blob/main/LICENSE.md")));
+                v -> openUrl("https://github.com/iso53/Nothing-Compass/blob/main/LICENSE")));
         items.add(new OptionItem(getString(R.string.item_third_party_licenses), null, R.drawable.ic_verified,
                 v -> startActivity(new Intent(this, OssLicensesMenuActivity.class))));
         items.add(new OptionItem(getString(R.string.item_manage_permission), null,
