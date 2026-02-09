@@ -223,7 +223,8 @@
                     app:layout_constraintCircle="@+id/center_point"
                     app:layout_constraintCircleAngle="0"
                     app:layout_constraintCircleRadius="@dimen/_90sdp"
-                    tools:ignore="MissingConstraints" />
+                    tools:ignore="MissingConstraints"
+                    android:fontFamily="@font/ntype82headline"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/cardinal_direction_east_text"
@@ -237,7 +238,8 @@
                     app:layout_constraintCircle="@+id/center_point"
                     app:layout_constraintCircleAngle="90"
                     app:layout_constraintCircleRadius="@dimen/_90sdp"
-                    tools:ignore="MissingConstraints" />
+                    tools:ignore="MissingConstraints"
+                    android:fontFamily="@font/ntype82headline"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/cardinal_direction_south_text"
@@ -251,7 +253,8 @@
                     app:layout_constraintCircle="@+id/center_point"
                     app:layout_constraintCircleAngle="180"
                     app:layout_constraintCircleRadius="@dimen/_90sdp"
-                    tools:ignore="MissingConstraints" />
+                    tools:ignore="MissingConstraints"
+                    android:fontFamily="@font/ntype82headline"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/cardinal_direction_west_text"
@@ -265,7 +268,8 @@
                     app:layout_constraintCircle="@+id/center_point"
                     app:layout_constraintCircleAngle="270"
                     app:layout_constraintCircleRadius="@dimen/_90sdp"
-                    tools:ignore="MissingConstraints" />
+                    tools:ignore="MissingConstraints"
+                    android:fontFamily="@font/ntype82headline"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -304,16 +308,17 @@
                 android:id="@+id/currentCompassDegree"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/ndot57"
                 android:gravity="center"
                 android:text='@{" " + String.valueOf((int) model.azimuth.degrees) + "°"}'
-                android:textSize="@dimen/_40ssp" />
+                android:textSize="@dimen/_45ssp" />
 
             <TextView
                 android:id="@+id/currentCompassDirection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:fontFamily="@font/ntype82regular"
                 android:text="@{model.azimuth.cardinalDirection.labelResourceId}"
                 android:textColor="@color/colorSecondary"
                 android:textSize="@dimen/_16ssp" />

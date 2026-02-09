@@ -3,7 +3,6 @@ package io.github.iso53.nothingcompass.view;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.AttributeSet;

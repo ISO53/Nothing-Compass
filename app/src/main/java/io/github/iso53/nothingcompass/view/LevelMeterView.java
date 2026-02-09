@@ -5,13 +5,14 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
-import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import androidx.core.content.res.ResourcesCompat;
 
 import com.google.android.material.R;
 import com.google.android.material.color.MaterialColors;
@@ -88,6 +89,8 @@ public class LevelMeterView extends FrameLayout {
         textView.setTextSize(DEGREE_TEXT_SIZE_SP);
         textView.setText(" 0°");
         textView.setGravity(Gravity.CENTER);
+        textView.setTypeface(ResourcesCompat.getFont(context,
+                io.github.iso53.nothingcompass.R.font.ndot57));
         return textView;
     }
 
@@ -241,7 +244,8 @@ public class LevelMeterView extends FrameLayout {
         // Determine if the rotating line is closer to horizontal or vertical
         // The line orientation switches every 90 degrees
         float normalizedAngle = normalizeAngle(spin, 180f);
-        isHorizontal = normalizedAngle < ORIENTATION_THRESHOLD || normalizedAngle > (180f - ORIENTATION_THRESHOLD);
+        isHorizontal =
+                normalizedAngle < ORIENTATION_THRESHOLD || normalizedAngle > (180f - ORIENTATION_THRESHOLD);
     }
 
     private void updateDegreeDisplay() {

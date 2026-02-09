@@ -3,20 +3,20 @@ package io.github.iso53.nothingcompass;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.ArrayList;
@@ -40,27 +40,21 @@ public class OptionsActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_options);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.optionsToolbar),
-                (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0);
-            return insets;
-        });
-
-        // Handle bottom padding for RecyclerView to avoid navigation bar overlap
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.optionsRecyclerView), (v,
-                                                                                           insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(v.getPaddingLeft(), v.getPaddingTop(), v.getPaddingRight(),
-                    systemBars.bottom + v.getPaddingBottom());
-            return insets;
-        });
-
-        // Setup Toolbar
-        findViewById(R.id.optionsToolbar).setOnClickListener(v -> finish());
-        ((androidx.appcompat.widget.Toolbar) findViewById(R.id.optionsToolbar)).setNavigationOnClickListener(v -> finish());
-
+        setupToolbar();
         setupRecyclerView();
+    }
+
+    private void setupToolbar() {
+        // Add back button
+        findViewById(R.id.optionsToolbar).setOnClickListener(v -> finish());
+        ((androidx.appcompat.widget.Toolbar) findViewById(R.id.optionsToolbar))
+                .setNavigationOnClickListener(v -> finish());
+
+        // Change the font of the title
+        CollapsingToolbarLayout collapsingToolbar = findViewById(R.id.collapseToolbar);
+        Typeface typeface = ResourcesCompat.getFont(this, R.font.ntype82headline);
+        collapsingToolbar.setExpandedTitleTypeface(typeface);
+        collapsingToolbar.setCollapsedTitleTypeface(typeface);
     }
 
     private void setupRecyclerView() {
@@ -114,26 +108,29 @@ public class OptionsActivity extends AppCompatActivity {
                 AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
 
         int checkedItem = 2; // Default to System
-        if (currentTheme == AppCompatDelegate.MODE_NIGHT_NO) checkedItem = 0;
-        else if (currentTheme == AppCompatDelegate.MODE_NIGHT_YES) checkedItem = 1;
+        if (currentTheme == AppCompatDelegate.MODE_NIGHT_NO)
+            checkedItem = 0;
+        else if (currentTheme == AppCompatDelegate.MODE_NIGHT_YES)
+            checkedItem = 1;
 
-        new MaterialAlertDialogBuilder(this).setTitle(R.string.item_theme).setSingleChoiceItems(themes, checkedItem, (dialog, which) -> {
-            int mode;
-            switch (which) {
-                case 0:
-                    mode = AppCompatDelegate.MODE_NIGHT_NO;
-                    break;
-                case 1:
-                    mode = AppCompatDelegate.MODE_NIGHT_YES;
-                    break;
-                default:
-                    mode = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
-                    break;
-            }
-            prefs.edit().putInt(PreferenceConstants.THEME, mode).apply();
-            AppCompatDelegate.setDefaultNightMode(mode);
-            dialog.dismiss();
-        }).show();
+        new MaterialAlertDialogBuilder(this).setTitle(R.string.item_theme)
+                .setSingleChoiceItems(themes, checkedItem, (dialog, which) -> {
+                    int mode;
+                    switch (which) {
+                        case 0:
+                            mode = AppCompatDelegate.MODE_NIGHT_NO;
+                            break;
+                        case 1:
+                            mode = AppCompatDelegate.MODE_NIGHT_YES;
+                            break;
+                        default:
+                            mode = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
+                            break;
+                    }
+                    prefs.edit().putInt(PreferenceConstants.THEME, mode).apply();
+                    AppCompatDelegate.setDefaultNightMode(mode);
+                    dialog.dismiss();
+                }).show();
     }
 
     private void showHapticFeedbackSelectionDialog() {
@@ -145,11 +142,12 @@ public class OptionsActivity extends AppCompatActivity {
 
         int checkedItem = currentHaptic ? 0 : 1;
 
-        new MaterialAlertDialogBuilder(this).setTitle(R.string.item_haptic_feedback).setSingleChoiceItems(options, checkedItem, (dialog, which) -> {
-            boolean enabled = (which == 0);
-            prefs.edit().putBoolean(PreferenceConstants.HAPTIC_FEEDBACK, enabled).apply();
-            dialog.dismiss();
-        }).show();
+        new MaterialAlertDialogBuilder(this).setTitle(R.string.item_haptic_feedback)
+                .setSingleChoiceItems(options, checkedItem, (dialog, which) -> {
+                    boolean enabled = (which == 0);
+                    prefs.edit().putBoolean(PreferenceConstants.HAPTIC_FEEDBACK, enabled).apply();
+                    dialog.dismiss();
+                }).show();
     }
 
     private void openPlayStore() {
@@ -184,7 +182,10 @@ public class OptionsActivity extends AppCompatActivity {
 
         String deviceInfo = "\n\n\n------------------------------" + "\nDevice Diagnostics " +
                 "(Please do not delete):" + "\nApp Version: " + appVersion + "\nAndroid Version: "
-                + android.os.Build.VERSION.RELEASE + " (SDK " + android.os.Build.VERSION.SDK_INT + ")" + "\nManufacturer: " + android.os.Build.MANUFACTURER + "\nModel: " + android.os.Build.MODEL + "\nProduct: " + android.os.Build.PRODUCT;
+                + android.os.Build.VERSION.RELEASE + " (SDK " + android.os.Build.VERSION.SDK_INT + ")"
+                + "\nManufacturer: " + android.os.Build.MANUFACTURER + "\nModel: "
+                + android.os.Build.MODEL
+                + "\nProduct: " + android.os.Build.PRODUCT;
 
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:"));
