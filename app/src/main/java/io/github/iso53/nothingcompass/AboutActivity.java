@@ -1,16 +1,17 @@
 package io.github.iso53.nothingcompass;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.PreferenceManager;
-import android.content.SharedPreferences;
+
 import io.github.iso53.nothingcompass.preference.PreferenceConstants;
 
 public class AboutActivity extends AppCompatActivity {
