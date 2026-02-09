@@ -1,7 +1,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/iso53/Nothing-Compass">
-    <img src="https://github.com/user-attachments/assets/7eae2b41-75de-4c82-8e9c-9194aa3c0695" alt="Logo" width="220" height="220">
+    <img src="https://github.com/user-attachments/assets/cf18fd3b-6df8-40e4-96bd-8719a59b15c5" alt="Logo" width="220" height="220">
   </a>
 
   <h3 align="center">Nothing Compass</h3>
