@@ -69,6 +69,8 @@ public class OptionsActivity extends AppCompatActivity {
                 v -> showThemeSelectionDialog()));
         items.add(new OptionItem(getString(R.string.item_haptic_feedback), null,
                 R.drawable.ic_vibration, v -> showHapticFeedbackSelectionDialog()));
+        items.add(new OptionItem(getString(R.string.item_north_reference), null,
+                R.drawable.ic_compass, v -> showNorthReferenceSelectionDialog()));
 
         // Category: App
         items.add(new OptionItem(getString(R.string.category_app)));
@@ -199,5 +201,58 @@ public class OptionsActivity extends AppCompatActivity {
             // Fallback to GitHub issues if no email app found
             openUrl("https://github.com/iso53/Nothing-Compass/issues");
         }
+    }
+
+    private final androidx.activity.result.ActivityResultLauncher<String> requestPermissionLauncher = registerForActivityResult(
+            new androidx.activity.result.contract.ActivityResultContracts.RequestPermission(),
+            isGranted -> {
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+                if (isGranted) {
+                    prefs.edit().putBoolean(PreferenceConstants.TRUE_NORTH, true).apply();
+                } else {
+                    android.widget.Toast.makeText(this, R.string.access_location_permission_denied,
+                            android.widget.Toast.LENGTH_SHORT).show();
+                }
+            });
+
+    private void showNorthReferenceSelectionDialog() {
+        String[] options = {getString(R.string.north_reference_true),
+                getString(R.string.north_reference_magnetic)};
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean isTrueNorth = prefs.getBoolean(PreferenceConstants.TRUE_NORTH, false);
+
+        int checkedItem = isTrueNorth ? 0 : 1;
+
+        new MaterialAlertDialogBuilder(this)
+                .setTitle(R.string.item_north_reference)
+                .setSingleChoiceItems(options, checkedItem, (dialog, which) -> {
+                    if (which == 0) {
+                        // True North selected
+                        if (androidx.core.content.ContextCompat.checkSelfPermission(this,
+                                android.Manifest.permission.ACCESS_FINE_LOCATION) == android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                            prefs.edit().putBoolean(PreferenceConstants.TRUE_NORTH, true).apply();
+                        } else {
+                            requestPermissionLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION);
+                        }
+                        dialog.dismiss();
+                    } else {
+                        // Magnetic North selected
+                        prefs.edit().putBoolean(PreferenceConstants.TRUE_NORTH, false).apply();
+                        dialog.dismiss();
+                    }
+                })
+                .setNeutralButton(R.string.north_reference_explanation_title,
+                        (dialog, which) -> showNorthReferenceExplanationDialog())
+                .setNegativeButton(android.R.string.cancel, null)
+                .show();
+    }
+
+    private void showNorthReferenceExplanationDialog() {
+        new MaterialAlertDialogBuilder(this)
+                .setTitle(R.string.north_reference_explanation_title)
+                .setMessage(R.string.north_reference_explanation_message)
+                .setPositiveButton(android.R.string.ok, null)
+                .show();
     }
 }
