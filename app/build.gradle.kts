@@ -13,7 +13,7 @@ android {
         applicationId = "io.github.iso53.nothingcompass"
         minSdk = 27
         targetSdk = 36
-        versionCode = 1
+        versionCode = 2
         versionName = "1.2.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
