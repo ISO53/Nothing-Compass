@@ -65,5 +65,12 @@
     <string name="item_haptic_feedback">Haptic feedback</string>
     <string name="haptic_feedback_on">On</string>
     <string name="haptic_feedback_off">Off</string>
+    <string name="item_north_reference">Compass Reference</string>
+    <string name="north_reference_true">True North</string>
+    <string name="north_reference_magnetic">Magnetic North</string>
+    <string name="north_reference_explanation_title">What is this?</string>
+    <string name="north_reference_explanation_message">True North points to the geographic North Pole.\n\nMagnetic North points to the Magnetic North Pole, which shifts over time.\n\nThe difference is the magnetic declination, which depends on your location.</string>
+    <string name="north_reference_permission_warning">Using True North requires location access to calculate the magnetic declination.</string>
+    <string name="north_reference_permission_button">Enable Location</string>
     <string name="options">Options</string>
 </resources>
