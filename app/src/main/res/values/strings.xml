@@ -65,6 +65,9 @@
     <string name="item_haptic_feedback">Haptic feedback</string>
     <string name="haptic_feedback_on">On</string>
     <string name="haptic_feedback_off">Off</string>
+    <string name="item_high_precision">High precision</string>
+    <string name="high_precision_on">On</string>
+    <string name="high_precision_off">Off</string>
     <string name="item_north_reference">Compass Reference</string>
     <string name="north_reference_true">True North</string>
     <string name="north_reference_magnetic">Magnetic North</string>

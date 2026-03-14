@@ -49,6 +49,7 @@ public class LevelMeterView extends FrameLayout {
     private int lastVibrationDegree = 0;
     private boolean isActive = false;
     private boolean isHapticFeedbackEnabled = true;
+    private boolean isHighPrecisionEnabled = false;
 
     public LevelMeterView(Context c, AttributeSet a) {
         super(c, a);
@@ -220,6 +221,11 @@ public class LevelMeterView extends FrameLayout {
         this.isHapticFeedbackEnabled = enabled;
     }
 
+    public void setHighPrecisionEnabled(boolean enabled) {
+        this.isHighPrecisionEnabled = enabled;
+        invalidate();
+    }
+
     private void performHapticFeedback() {
         Vibrator vibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
         if (vibrator != null && vibrator.hasVibrator()) {
@@ -249,13 +255,24 @@ public class LevelMeterView extends FrameLayout {
     }
 
     private void updateDegreeDisplay() {
-        int displayDegree = calculateDisplayDegree();
+        float degreeValue = calculateDegreeValue();
+        String displayDegree;
+        
+        if (isHighPrecisionEnabled) {
+            if (Math.abs(degreeValue) < 0.005f) {
+                degreeValue = 0f;
+            }
+            displayDegree = String.format(java.util.Locale.getDefault(), "%.2f", degreeValue);
+        } else {
+            displayDegree = String.valueOf(Math.round(degreeValue));
+        }
+
         degreeTextView.setTextColor(getDegreeTextColor());
         degreeTextView.setText(" " + displayDegree + "°");
         degreeTextView.setRotation(spin - 90f);
     }
 
-    private int calculateDisplayDegree() {
+    private float calculateDegreeValue() {
         // Calculate angle relative to nearest 90-degree orientation (0, 90, 180, 270)
         float normalizedSpin = normalizeAngle(spin, 360f);
         float angleFromNearest90 = normalizedSpin % 90f;
@@ -268,7 +285,7 @@ public class LevelMeterView extends FrameLayout {
             degreeValue = angleFromNearest90 - 90f; // 45 to 90 becomes -45 to 0
         }
 
-        return Math.round(degreeValue);
+        return degreeValue;
     }
 
     // Color helper methods

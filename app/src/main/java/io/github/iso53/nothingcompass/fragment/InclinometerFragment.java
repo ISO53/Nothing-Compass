@@ -47,6 +47,10 @@ public class InclinometerFragment extends Fragment implements SensorEventListene
             levelMeterView.setHapticFeedbackEnabled(enabled);
         });
 
+        preferenceStore.getHighPrecision().observe(getViewLifecycleOwner(), enabled -> {
+            levelMeterView.setHighPrecisionEnabled(enabled);
+        });
+
         // Initially show inclinometer, hide level meter
         inclinometerView.setAlpha(1f);
         inclinometerView.setIsActive(true);
