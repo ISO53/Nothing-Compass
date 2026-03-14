@@ -70,7 +70,7 @@ public class OptionsActivity extends AppCompatActivity {
         items.add(new OptionItem(getString(R.string.item_haptic_feedback), null,
                 R.drawable.ic_vibration, v -> showHapticFeedbackSelectionDialog()));
         items.add(new OptionItem(getString(R.string.item_high_precision), null,
-                R.drawable.ic_settings, v -> showHighPrecisionSelectionDialog()));
+                R.drawable.precision, v -> showHighPrecisionSelectionDialog()));
         items.add(new OptionItem(getString(R.string.item_north_reference), null,
                 R.drawable.ic_compass, v -> showNorthReferenceSelectionDialog()));
 
