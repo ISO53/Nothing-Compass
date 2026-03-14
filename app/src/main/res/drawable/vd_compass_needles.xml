@@ -7,24 +7,24 @@
         <!-- Compass Outer Ring -->
         <path
             android:fillColor="@android:color/transparent"
-            android:pathData="M 100,100 m -80,0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0"
-            android:strokeColor="#3A3A3A"
+            android:pathData="M 100,100 m -85,0 a 85,85 0 1,1 170,0 a 85,85 0 1,1 -170,0"
+            android:strokeColor="@color/colorTertiary"
             android:strokeWidth="1.5" />
         
-        <!-- Magnetic North Needle Group -->
+        <!-- Magnetic North North Group -->
         <group
             android:name="magnetic_needle_group"
             android:pivotX="100"
             android:pivotY="100">
             <path
-                android:fillColor="#E8E8E8"
+                android:fillColor="@color/colorOnBackground"
                 android:pathData="M 100,28 L 107,98 L 100,112 L 93,98 Z" />
             <path
-                android:fillColor="#2A2A2A"
+                android:fillColor="@color/colorSecondary"
                 android:pathData="M 100,112 L 107,98 L 100,172 L 93,98 Z" />
             <!-- Magnetic Label "M" -->
             <path
-                android:fillColor="#E8E8E8"
+                android:fillColor="@color/colorOnBackground"
                 android:pathData="M 97,18 L 100,23 L 103,18 L 104.5,18 L 104.5,26 L 103,26 L 103,20 L 100.5,24 L 99.5,24 L 97,20 L 97,26 L 95.5,26 L 95.5,18 Z" />
         </group>
         
@@ -35,20 +35,25 @@
             android:pivotY="100"
             android:rotation="0">
             <path
-                android:fillColor="#888888"
+                android:fillColor="@color/colorSecondary"
                 android:pathData="M 100,34 L 105,98 L 100,110 L 95,98 Z" />
             <path
-                android:fillColor="#1E1E1E"
+                android:fillColor="@color/colorTertiary"
                 android:pathData="M 100,110 L 105,98 L 100,166 L 95,98 Z" />
             <!-- True Label "T" -->
             <path
-                android:fillColor="#888888"
+                android:fillColor="@color/colorSecondary"
                 android:pathData="M 96,18 L 104,18 L 104,19.5 L 100.75,19.5 L 100.75,26 L 99.25,26 L 99.25,19.5 L 96,19.5 Z" />
         </group>
         
         <!-- Center Pivot Dot -->
         <path
-            android:fillColor="#555555"
+            android:fillColor="@color/colorSecondary"
             android:pathData="M 100,100 m -5,0 a 5,5 0 1,1 10,0 a 5,5 0 1,1 -10,0" />
+
+        <!-- Red Center Accent Dot -->
+        <path
+            android:fillColor="@color/colorPrimary"
+            android:pathData="M 100,100 m -2,0 a 2,2 0 1,1 4,0 a 2,2 0 1,1 -4,0" />
     </group>
 </vector>
