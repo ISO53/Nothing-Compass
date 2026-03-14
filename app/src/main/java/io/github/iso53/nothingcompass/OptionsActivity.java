@@ -72,7 +72,7 @@ public class OptionsActivity extends AppCompatActivity {
         items.add(new OptionItem(getString(R.string.item_high_precision), null,
                 R.drawable.precision, v -> showHighPrecisionSelectionDialog()));
         items.add(new OptionItem(getString(R.string.item_north_reference), null,
-                R.drawable.ic_compass, v -> showNorthReferenceSelectionDialog()));
+                R.drawable.ic_compass, v -> startActivity(new Intent(this, NorthTypeActivity.class))));
 
         // Category: App
         items.add(new OptionItem(getString(R.string.category_app)));

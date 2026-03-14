@@ -1,0 +1,6 @@
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/vd_compass_needles">
+    <target
+        android:name="true_needle_group"
+        android:animation="@animator/anim_declination_rotation" />
+</animated-vector>
