@@ -1,9 +1,13 @@
 package io.github.iso53.nothingcompass;
 
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -72,7 +76,7 @@ public class OptionsActivity extends AppCompatActivity {
         items.add(new OptionItem(getString(R.string.item_high_precision), null,
                 R.drawable.precision, v -> showHighPrecisionSelectionDialog()));
         items.add(new OptionItem(getString(R.string.item_north_reference), null,
-                R.drawable.ic_compass, v -> showNorthReferenceSelectionDialog()));
+                R.drawable.ic_compass, v -> startActivity(new Intent(this, NorthTypeActivity.class))));
 
         // Category: App
         items.add(new OptionItem(getString(R.string.category_app)));
@@ -206,7 +210,8 @@ public class OptionsActivity extends AppCompatActivity {
                 + android.os.Build.VERSION.RELEASE + " (SDK " + android.os.Build.VERSION.SDK_INT + ")"
                 + "\nManufacturer: " + android.os.Build.MANUFACTURER + "\nModel: "
                 + android.os.Build.MODEL
-                + "\nProduct: " + android.os.Build.PRODUCT;
+                + "\nProduct: " + android.os.Build.PRODUCT
+                + getSensorInfo();
 
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:"));
@@ -220,6 +225,43 @@ public class OptionsActivity extends AppCompatActivity {
             // Fallback to GitHub issues if no email app found
             openUrl("https://github.com/iso53/Nothing-Compass/issues");
         }
+    }
+
+    private String getSensorInfo() {
+        SensorManager sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n\n--- Sensor Information ---");
+
+        if (sensorManager != null) {
+            List<Sensor> sensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
+            sb.append("\nTotal Sensors: ").append(sensors.size());
+
+            // Focus on key sensors for a compass app
+            int[] keyTypes = {Sensor.TYPE_MAGNETIC_FIELD, Sensor.TYPE_ACCELEROMETER,
+                    Sensor.TYPE_GYROSCOPE, Sensor.TYPE_ROTATION_VECTOR};
+            String[] keyNames = {"Magnetometer", "Accelerometer", "Gyroscope", "Rotation Vector"};
+
+            for (int i = 0; i < keyTypes.length; i++) {
+                Sensor s = sensorManager.getDefaultSensor(keyTypes[i]);
+                sb.append("\n").append(keyNames[i]).append(": ");
+                if (s != null) {
+                    sb.append(s.getName()).append(" (").append(s.getVendor()).append(")");
+                } else {
+                    sb.append("Not Available");
+                }
+            }
+        }
+
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (locationManager != null) {
+            sb.append("\n\n--- Location Status ---");
+            boolean gpsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+            boolean networkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+            sb.append("\nGPS Provider: ").append(gpsEnabled ? "Enabled" : "Disabled");
+            sb.append("\nNetwork Provider: ").append(networkEnabled ? "Enabled" : "Disabled");
+        }
+
+        return sb.toString();
     }
 
     private final androidx.activity.result.ActivityResultLauncher<String> requestPermissionLauncher = registerForActivityResult(

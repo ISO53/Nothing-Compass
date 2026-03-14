@@ -13,8 +13,8 @@ android {
         applicationId = "io.github.iso53.nothingcompass"
         minSdk = 27
         targetSdk = 36
-        versionCode = 3
-        versionName = "1.3.0"
+        versionCode = 4
+        versionName = "1.3.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

@@ -23,6 +23,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".OptionsActivity" />
+        <activity
+            android:name=".NorthTypeActivity"
+            android:parentActivityName=".OptionsActivity" />
         <activity android:name=".AboutActivity" />
     </application>
 
