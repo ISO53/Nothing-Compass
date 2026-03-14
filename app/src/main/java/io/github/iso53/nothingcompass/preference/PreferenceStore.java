@@ -17,12 +17,14 @@ public class PreferenceStore {
 
     private final MutableLiveData<Boolean> trueNorth = new MutableLiveData<>();
     private final MutableLiveData<Boolean> hapticFeedback = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> highPrecision = new MutableLiveData<>();
 
     private final SharedPreferences sharedPreferences;
 
     private final SharedPreferences.OnSharedPreferenceChangeListener sharedPreferenceChangeListener;
     private final Observer<Boolean> trueNorthObserver;
     private final Observer<Boolean> hapticFeedbackObserver;
+    private final Observer<Boolean> highPrecisionObserver;
 
     public PreferenceStore(@NonNull Context context, @NonNull Lifecycle lifecycle) {
         this.sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -37,6 +39,9 @@ public class PreferenceStore {
                 case PreferenceConstants.HAPTIC_FEEDBACK:
                     updateHapticFeedback();
                     break;
+                case PreferenceConstants.HIGH_PRECISION:
+                    updateHighPrecision();
+                    break;
             }
         };
 
@@ -50,14 +55,21 @@ public class PreferenceStore {
             Log.d(TAG, "Persisted hapticFeedback: " + value);
         };
 
+        this.highPrecisionObserver = value -> {
+            sharedPreferences.edit().putBoolean(PreferenceConstants.HIGH_PRECISION, value).apply();
+            Log.d(TAG, "Persisted highPrecision: " + value);
+        };
+
         updateTrueNorth();
         updateHapticFeedback();
+        updateHighPrecision();
 
         lifecycle.addObserver(new DefaultLifecycleObserver() {
             @Override
             public void onCreate(@NonNull LifecycleOwner owner) {
                 trueNorth.observeForever(trueNorthObserver);
                 hapticFeedback.observeForever(hapticFeedbackObserver);
+                highPrecision.observeForever(highPrecisionObserver);
 
                 sharedPreferences.registerOnSharedPreferenceChangeListener(sharedPreferenceChangeListener);
             }
@@ -68,6 +80,7 @@ public class PreferenceStore {
 
                 trueNorth.removeObserver(trueNorthObserver);
                 hapticFeedback.removeObserver(hapticFeedbackObserver);
+                highPrecision.removeObserver(highPrecisionObserver);
             }
         });
     }
@@ -78,6 +91,10 @@ public class PreferenceStore {
 
     public MutableLiveData<Boolean> getHapticFeedback() {
         return hapticFeedback;
+    }
+
+    public MutableLiveData<Boolean> getHighPrecision() {
+        return highPrecision;
     }
 
     private void updateTrueNorth() {
@@ -91,6 +108,13 @@ public class PreferenceStore {
         boolean storedValue = sharedPreferences.getBoolean(PreferenceConstants.HAPTIC_FEEDBACK, true);
         if (!Boolean.valueOf(storedValue).equals(hapticFeedback.getValue())) {
             hapticFeedback.setValue(storedValue);
+        }
+    }
+
+    private void updateHighPrecision() {
+        boolean storedValue = sharedPreferences.getBoolean(PreferenceConstants.HIGH_PRECISION, false);
+        if (!Boolean.valueOf(storedValue).equals(highPrecision.getValue())) {
+            highPrecision.setValue(storedValue);
         }
     }
 }

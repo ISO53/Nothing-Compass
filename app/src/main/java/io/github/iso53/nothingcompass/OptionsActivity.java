@@ -69,6 +69,8 @@ public class OptionsActivity extends AppCompatActivity {
                 v -> showThemeSelectionDialog()));
         items.add(new OptionItem(getString(R.string.item_haptic_feedback), null,
                 R.drawable.ic_vibration, v -> showHapticFeedbackSelectionDialog()));
+        items.add(new OptionItem(getString(R.string.item_high_precision), null,
+                R.drawable.precision, v -> showHighPrecisionSelectionDialog()));
         items.add(new OptionItem(getString(R.string.item_north_reference), null,
                 R.drawable.ic_compass, v -> showNorthReferenceSelectionDialog()));
 
@@ -148,6 +150,23 @@ public class OptionsActivity extends AppCompatActivity {
                 .setSingleChoiceItems(options, checkedItem, (dialog, which) -> {
                     boolean enabled = (which == 0);
                     prefs.edit().putBoolean(PreferenceConstants.HAPTIC_FEEDBACK, enabled).apply();
+                    dialog.dismiss();
+                }).show();
+    }
+
+    private void showHighPrecisionSelectionDialog() {
+        String[] options = {getString(R.string.high_precision_on),
+                getString(R.string.high_precision_off)};
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean currentHighPrecision = prefs.getBoolean(PreferenceConstants.HIGH_PRECISION, false);
+
+        int checkedItem = currentHighPrecision ? 0 : 1;
+
+        new MaterialAlertDialogBuilder(this).setTitle(R.string.item_high_precision)
+                .setSingleChoiceItems(options, checkedItem, (dialog, which) -> {
+                    boolean enabled = (which == 0);
+                    prefs.edit().putBoolean(PreferenceConstants.HIGH_PRECISION, enabled).apply();
                     dialog.dismiss();
                 }).show();
     }
