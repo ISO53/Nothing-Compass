@@ -66,8 +66,12 @@ Nothing Compass is designed to be a simple, distraction-free tool for navigation
   <tr>
     <td><img src="https://github.com/user-attachments/assets/c92a1aa6-6e01-4d0a-ab5f-a57b75b5927e" width="250"/></td>
     <td><img src="https://github.com/user-attachments/assets/c6e1abb5-22a0-42d3-9e19-dbf4fb9df817" width="250"/></td>
+  </tr> 
+  <tr>
     <td><img src="https://github.com/user-attachments/assets/a1340a5e-9b1f-4805-964b-e79cae4cd964" width="250"/></td>
     <td><img src="https://github.com/user-attachments/assets/d25322f4-2d62-441a-b1c1-1647ba3ae5b9" width="250"/></td>
+  </tr>
+  <tr>
     <td><img src="https://github.com/user-attachments/assets/90e66afd-7162-4c78-be3d-1fcb60d884ac" width="250"/></td>
   </tr>
 </table>
